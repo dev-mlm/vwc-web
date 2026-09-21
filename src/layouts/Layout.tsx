@@ -1,33 +1,75 @@
-import { AppBar, Toolbar, Typography, Button, Container, Box, Stack } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box, Container } from '@mui/material';
 import { Link, Outlet } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-export default function Layout() {
+// -----------------------------------------------------------------------------
+//  MainLayout
+// -----------------------------------------------------------------------------
+
+export const MainLayout = () => {
+  const { t, i18n } = useTranslation();
+
+  // ---------------------------------------------
+  //  Event Handlers
+  // ---------------------------------------------
+
+  const toggleLanguage = () => {
+    const nextLang = i18n.language.startsWith('es') ? 'en' : 'es';
+    i18n.changeLanguage(nextLang);
+  };
+
+  // ---------------------------------------------
+  //  JSX
+  // ---------------------------------------------
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+
+      {/* Nav Bar */}
       <AppBar position="static">
-        <Toolbar>
-          <Stack
-            width="100%"
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-          >
-            <Typography variant="h6" component="div">
+        <Container maxWidth="lg">
+          <Toolbar>
+            <Typography
+              variant="h6"
+              align="left"
+              sx={{ flexGrow: 1 }}
+            >
               The Vida Wellness Center
             </Typography>
 
-            <Stack direction="row" gap={1}>
-              <Button color="inherit" component={Link} to="/">Home</Button>
-              <Button color="inherit" component={Link} to="/serives">Services</Button>
-              <Button color="inherit" component={Link} to="/staff">Staff</Button>
-            </Stack>
-          </Stack>
-        </Toolbar>
+            {/* Page Buttons */}
+            <Button color="inherit" component={Link} to="/">{t('nav.home')}</Button>
+            <Button color="inherit" component={Link} to="/staff">{t('nav.staff')}</Button>
+            <Button color="inherit" component={Link} to="/services">{t('nav.services')}</Button>
+
+            {/* Language Toggle */}
+            <Button
+              color="secondary"
+              variant="contained"
+              onClick={toggleLanguage}
+              sx={{ ml: 2 }}
+            >
+              {t('langToggle')}
+            </Button>
+          </Toolbar>
+        </Container>
       </AppBar>
 
-      <Container component="main" sx={{ mt: 4, mb: 4, flexGrow: 1 }}>
-        <Outlet />
-      </Container>
+      {/* Page Content */}
+      <Box component="main" sx={{ flexGrow: 1 }}>
+        <Container maxWidth="lg">
+          <Outlet />
+        </Container>
+      </Box>
+
+      {/* Footer */}
+      <Box component="footer" sx={{ py: 3, px: 2, mt: 'auto', backgroundColor: 'grey.200' }}>
+        <Container maxWidth="sm">
+          <Typography variant="body2" color="text.secondary" align="center">
+            © {new Date().getFullYear()} My App. {t('footer.rights')}
+          </Typography>
+        </Container>
+      </Box>
     </Box>
   );
 }

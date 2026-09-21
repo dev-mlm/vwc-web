@@ -1,7 +1,7 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, CssBaseline } from '@mui/material';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import theme from './theme';
-import Layout from './layouts/layout';
+import { MainLayout } from './layouts/Layout';
 import { HomePage } from './pages/HomePage';
 import { StaffPage } from './pages/StaffPage';
 import { ServicesPage } from './pages/ServicesPage';
@@ -9,10 +9,10 @@ import { ServicesPage } from './pages/ServicesPage';
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline /> {/* Normalizes CSS across browsers */}
+      <CssBaseline />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<MainLayout />}>
             <Route index element={<HomePage />} />
             <Route path="staff" element={<StaffPage />} />
             <Route path="services" element={<ServicesPage />} />
