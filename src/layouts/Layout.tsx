@@ -66,7 +66,7 @@ export const MainLayout = () => {
       <Box component="footer" sx={{ py: 3, px: 2, mt: 'auto', backgroundColor: 'grey.200' }}>
         <Container maxWidth="sm">
           <Typography variant="body2" color="text.secondary" align="center">
-            © {new Date().getFullYear()} My App. {t('footer.rights')}
+            © {new Date().getFullYear()} Vida Wellness Center. All rights reserved. All content is protected by U.S. and international copyright laws. Patient information is private and managed in strict compliance with HIPAA. Unauthorized use or distribution of the content on this site is prohibited.
           </Typography>
         </Container>
       </Box>

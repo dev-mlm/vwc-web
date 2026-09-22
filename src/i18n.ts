@@ -93,9 +93,6 @@ const resources = {
           },
         },
       },
-      footer: {
-        rights: 'All rights reserved.'
-      },
       langToggle: 'Español',
     },
   },
@@ -188,9 +185,6 @@ const resources = {
             desc: "Este enfoque utiliza una presión excepcionalmente ligera y sostenida, a menudo no más que el toque usado para probar la madurez de un tomate, para restaurar con seguridad la alineación espinal y la función del sistema nervioso en bebés y niños sin giros bruscos.",
           },
         },
-      },
-      footer: {
-        rights: 'Todos los derechos reservados.'
       },
       langToggle: 'English',
     },
