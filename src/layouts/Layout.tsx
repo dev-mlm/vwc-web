@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, Box, Container } from '@mui/material';
 import { Link, Outlet } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { ConsultationDialog } from '../components/ConsultationDialog';
 
 // -----------------------------------------------------------------------------
 //  MainLayout
@@ -8,10 +10,15 @@ import { useTranslation } from 'react-i18next';
 
 export const MainLayout = () => {
   const { t, i18n } = useTranslation();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   // ---------------------------------------------
   //  Event Handlers
   // ---------------------------------------------
+
+  const toggleDialog = () => {
+    setIsDialogOpen((prev) => !prev);
+  };
 
   const toggleLanguage = () => {
     const nextLang = i18n.language.startsWith('es') ? 'en' : 'es';
@@ -42,6 +49,16 @@ export const MainLayout = () => {
             <Button color="inherit" component={Link} to="/staff">{t('nav.staff')}</Button>
             <Button color="inherit" component={Link} to="/services">{t('nav.services')}</Button>
 
+            {/* Consultation Button */}
+            <Button
+              color="secondary"
+              variant="contained"
+              onClick={toggleDialog}
+              sx={{ ml: 2 }}
+            >
+              {t('nav.consultation')}
+            </Button>
+
             {/* Language Toggle */}
             <Button
               color="secondary"
@@ -49,11 +66,13 @@ export const MainLayout = () => {
               onClick={toggleLanguage}
               sx={{ ml: 2 }}
             >
-              {t('langToggle')}
+              {t('nav.langToggle')}
             </Button>
           </Toolbar>
         </Container>
       </AppBar>
+
+      <ConsultationDialog open={isDialogOpen} onClose={toggleDialog} />
 
       {/* Page Content */}
       <Box component="main" sx={{ flexGrow: 1 }}>
