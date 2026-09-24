@@ -5,18 +5,18 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions,
-  TextField,
   Button,
   CircularProgress,
   Stack,
   Alert,
 } from "@mui/material";
 import { useForm, Controller, type SubmitHandler } from "react-hook-form";
-import { PhoneInput } from "../atoms/PhoneInput";
 import { matchIsValidTel } from "mui-tel-input";
-import { SecondaryText } from "../atoms/SecondaryText";
 import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
+import { SecondaryText } from "../atoms/SecondaryText";
+import { PhoneInput } from "../atoms/PhoneInput";
+import { ResponsiveTextField } from "../atoms/ResponsiveTextField"
 
 // -----------------------------------------------------------------------------
 //  Types
@@ -145,7 +145,7 @@ export const ConsultationDialog = ({
                 <SecondaryText>
                   {t('consultation.firstName')}
                 </SecondaryText>
-                <TextField
+                <ResponsiveTextField
                   id="first-name"
                   placeholder={t('consultation.firstNamePh')}
                   fullWidth
@@ -162,7 +162,7 @@ export const ConsultationDialog = ({
                 <SecondaryText>
                   {t('consultation.lastName')}
                 </SecondaryText>
-                <TextField
+                <ResponsiveTextField
                   id="last-name"
                   placeholder={t('consultation.lastNamePh')}
                   fullWidth
@@ -182,7 +182,7 @@ export const ConsultationDialog = ({
                 <SecondaryText>
                   {t('consultation.email')}
                 </SecondaryText>
-                <TextField
+                <ResponsiveTextField
                   id="email"
                   type="email"
                   placeholder={t('consultation.emailPh')}
@@ -229,7 +229,7 @@ export const ConsultationDialog = ({
               <SecondaryText>
                 {t('consultation.message')}
               </SecondaryText>
-              <TextField
+              <ResponsiveTextField
                 id="reason"
                 placeholder={t('consultation.messagePh')}
                 fullWidth
