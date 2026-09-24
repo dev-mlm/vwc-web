@@ -12,9 +12,9 @@ import {
   Alert,
 } from "@mui/material";
 import { useForm, Controller, type SubmitHandler } from "react-hook-form";
-import { PhoneInput } from "./PhoneInput";
+import { PhoneInput } from "../atoms/PhoneInput";
 import { matchIsValidTel } from "mui-tel-input";
-import { SecondaryText } from "./SecondaryText";
+import { SecondaryText } from "../atoms/SecondaryText";
 import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
 

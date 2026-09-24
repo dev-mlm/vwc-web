@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, Box, Container } from '@mui/material';
 import { Link, Outlet } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ConsultationDialog } from '../components/ConsultationDialog';
+import { ConsultationDialog } from '../components/molecules/ConsultationDialog';
 
 // -----------------------------------------------------------------------------
 //  MainLayout
