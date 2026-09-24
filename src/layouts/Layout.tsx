@@ -1,29 +1,12 @@
-import { useState } from 'react';
-import { AppBar, Toolbar, Typography, Button, Box, Container } from '@mui/material';
-import { Link, Outlet } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { ConsultationDialog } from '../components/molecules/ConsultationDialog';
+import { Typography, Box, Container } from '@mui/material';
+import { Outlet } from 'react-router-dom';
+import { NavBar } from '../components/organisms/NavBar/NavBar';
 
 // -----------------------------------------------------------------------------
 //  MainLayout
 // -----------------------------------------------------------------------------
 
 export const MainLayout = () => {
-  const { t, i18n } = useTranslation();
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  // ---------------------------------------------
-  //  Event Handlers
-  // ---------------------------------------------
-
-  const toggleDialog = () => {
-    setIsDialogOpen((prev) => !prev);
-  };
-
-  const toggleLanguage = () => {
-    const nextLang = i18n.language.startsWith('es') ? 'en' : 'es';
-    i18n.changeLanguage(nextLang);
-  };
 
   // ---------------------------------------------
   //  JSX
@@ -33,46 +16,7 @@ export const MainLayout = () => {
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 
       {/* Nav Bar */}
-      <AppBar position="static">
-        <Container maxWidth="lg">
-          <Toolbar>
-            <Typography
-              variant="h6"
-              align="left"
-              sx={{ flexGrow: 1 }}
-            >
-              The Vida Wellness Center
-            </Typography>
-
-            {/* Page Buttons */}
-            <Button color="inherit" component={Link} to="/">{t('nav.home')}</Button>
-            <Button color="inherit" component={Link} to="/staff">{t('nav.staff')}</Button>
-            <Button color="inherit" component={Link} to="/services">{t('nav.services')}</Button>
-
-            {/* Consultation Button */}
-            <Button
-              color="secondary"
-              variant="contained"
-              onClick={toggleDialog}
-              sx={{ ml: 2 }}
-            >
-              {t('nav.consultation')}
-            </Button>
-
-            {/* Language Toggle */}
-            <Button
-              color="secondary"
-              variant="contained"
-              onClick={toggleLanguage}
-              sx={{ ml: 2 }}
-            >
-              {t('nav.langToggle')}
-            </Button>
-          </Toolbar>
-        </Container>
-      </AppBar>
-
-      <ConsultationDialog open={isDialogOpen} onClose={toggleDialog} />
+      <NavBar />
 
       {/* Page Content */}
       <Box component="main" sx={{ flexGrow: 1 }}>
