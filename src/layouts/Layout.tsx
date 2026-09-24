@@ -1,6 +1,7 @@
-import { Typography, Box, Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import { NavBar } from '../components/organisms/NavBar/NavBar';
+import { Footer } from '../components/organisms/Footer/Footer';
 
 // -----------------------------------------------------------------------------
 //  MainLayout
@@ -26,13 +27,7 @@ export const MainLayout = () => {
       </Box>
 
       {/* Footer */}
-      <Box component="footer" sx={{ py: 3, px: 2, mt: 'auto', backgroundColor: 'grey.200' }}>
-        <Container maxWidth="sm">
-          <Typography variant="body2" color="text.secondary" align="center">
-            © {new Date().getFullYear()} Vida Wellness Center. All rights reserved. All content is protected by U.S. and international copyright laws. Patient information is private and managed in strict compliance with HIPAA. Unauthorized use or distribution of the content on this site is prohibited.
-          </Typography>
-        </Container>
-      </Box>
+      <Footer />
     </Box>
   );
 }

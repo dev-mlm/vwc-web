@@ -1,12 +1,9 @@
 import { useState } from 'react';
-import {
-  useTheme,
-  useMediaQuery,
-} from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { ConsultationDialog } from '../../molecules/ConsultationDialog';
 import { DesktopNavBar } from './DesktopNavBar';
 import { MobileNavBar } from './MobileNavBar';
+import { useScreensize } from '../../../hooks/useScreensize';
 
 // -----------------------------------------------------------------------------
 //  NavBar
@@ -14,9 +11,11 @@ import { MobileNavBar } from './MobileNavBar';
 
 export const NavBar = () => {
   const { i18n } = useTranslation();
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const {
+    isDesktop,
+    isTablet,
+    isMobile,
+  } = useScreensize();
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -48,7 +47,7 @@ export const NavBar = () => {
       )}
 
       {/* Mobile Variant */}
-      {isMobile && (
+      {(isTablet || isMobile) && (
         <MobileNavBar
           toggleDialog={toggleDialog}
           toggleLanguage={toggleLanguage}
