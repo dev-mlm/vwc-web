@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Container, Stack, Button, Typography } from "@mui/material";
+import { Container, Stack, Button, Typography, Box } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { ConsultationDialog } from "../../components/molecules/ConsultationDialog";
 import { HeroCards } from "../../components/molecules/HeroCards";
 import { useScreensize } from "../../hooks/useScreensize";
+import largeLogo from "../../assets/logo/logo-square.png";
 
 // -----------------------------------------------------------------------------
 //  HERO Section
@@ -30,37 +31,62 @@ export const HeroSection = () => {
     <>
       <Container sx={{ p: 4 }}>
         <Stack
-          spacing={2}
+          direction={isMobile ? "column-reverse" : "row"}
+          spacing={isMobile ? 4 : 6}
           sx={{
-            justifyContent: 'center',
-            alignItems: 'center',
+            justifyContent: "center",
+            alignItems: "center"
           }}
         >
-          <Typography
-            variant={isMobile ? "h3" : "h2"}
-            align="center"
-          >
-            {t('home.section_hero.title')}
-          </Typography>
-          <Typography
-            variant={isMobile ? "h5" : "h4"}
-            align="center"
-            color="textSecondary"
-          >
-            {t('home.section_hero.subtitle')}
-          </Typography>
+          <Box>
+            <Box
+              component="img"
+              src={largeLogo}
+              alt="Vida Wellness Center"
+              sx={(theme) => ({
+                width: '100%',
+                height: 'auto',
+                border: `4px solid ${theme.palette.text.disabled}`,
+                borderRadius: 2,
+              })}
+            />
+          </Box>
 
-          {/* Consultation Button */}
-          <Button
-            size="large"
-            color="secondary"
-            variant="contained"
-            onClick={toggleDialog}
-            sx={{ width: 'fit-content' }}
+          <Stack
+            spacing={2}
+            sx={{
+              justifyContent: 'center',
+              alignItems: isMobile ? 'center' : 'left',
+            }}
           >
-            {t('nav.consultation')}
-          </Button>
-        </Stack>
+
+            <Typography
+              variant={isMobile ? "h3" : "h2"}
+              align={isMobile ? "center" : "left"}
+            >
+              {t('home.section_hero.title')}
+            </Typography>
+
+            <Typography
+              variant={isMobile ? "h5" : "h4"}
+              align={isMobile ? "center" : "left"}
+              color="textSecondary"
+            >
+              {t('home.section_hero.subtitle')}
+            </Typography>
+
+            {/* Consultation Button */}
+            <Button
+              size="large"
+              color="secondary"
+              variant="contained"
+              onClick={toggleDialog}
+              sx={{ width: 'fit-content' }}
+            >
+              {t('nav.consultation')}
+            </Button>
+          </Stack>
+        </Stack >
       </Container>
 
       <HeroCards />
