@@ -5,15 +5,17 @@ import {
   CardMedia,
   CardContent,
   Grid,
-  Stack
+  Stack,
+  Divider
 } from '@mui/material';
-import zamirActionOne from '../assets/services/jazmin-action-1.avif';
-import zamirActionTwo from '../assets/services/jazmin-action-2.avif';
+import zamirActionOne from '../assets/services/zamir-action-1.avif';
+import zamirActionTwo from '../assets/services/zamir-action-2.avif';
 import jazminActionOne from '../assets/services/jazmin-action-1.avif';
 import jazminActionTwo from '../assets/services/jazmin-action-2.avif';
 import officeOne from '../assets/services/office-1.avif';
 import officeTwo from '../assets/services/office-2.avif';
 import { useTranslation } from 'react-i18next';
+import { ReviewsSection } from './Home/ReviewsSection';
 
 // -----------------------------------------------------------------------------
 //  Types
@@ -103,6 +105,8 @@ export const ServicesPage = () => {
           </Typography>
         </Stack>
 
+        <Divider />
+
         <Grid container spacing={3}>
           {services.map((service) => (
             <Grid key={service.id} size={{ xs: 12, sm: 6, md: 4 }}>
@@ -132,6 +136,9 @@ export const ServicesPage = () => {
           ))}
         </Grid>
 
+        <Divider />
+
+        <ReviewsSection />
       </Stack>
     </Container>
   );

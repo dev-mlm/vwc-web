@@ -5,6 +5,7 @@ import { ConsultationDialog } from "../../components/molecules/ConsultationDialo
 import { HeroCards } from "../../components/molecules/HeroCards";
 import { useScreensize } from "../../hooks/useScreensize";
 import largeLogo from "../../assets/logo/logo-square.png";
+import { LanguageBtn } from "../../components/molecules/LanguageBtn";
 
 // -----------------------------------------------------------------------------
 //  HERO Section
@@ -85,6 +86,9 @@ export const HeroSection = () => {
             >
               {t('nav.consultation')}
             </Button>
+
+            {/* Language Button */}
+            <LanguageBtn />
           </Stack>
         </Stack >
       </Container>

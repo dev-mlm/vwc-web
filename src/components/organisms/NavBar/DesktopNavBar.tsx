@@ -14,7 +14,6 @@ import { useTranslation } from 'react-i18next';
 
 interface DesktopNavBarProps {
   toggleDialog: () => void;
-  toggleLanguage: () => void;
 }
 
 // -----------------------------------------------------------------------------
@@ -23,7 +22,6 @@ interface DesktopNavBarProps {
 
 export const DesktopNavBar = ({
   toggleDialog,
-  toggleLanguage,
 }: DesktopNavBarProps) => {
   const { t } = useTranslation();
 
@@ -56,16 +54,6 @@ export const DesktopNavBar = ({
             sx={{ ml: 2 }}
           >
             {t('nav.consultation')}
-          </Button>
-
-          {/* Language Toggle */}
-          <Button
-            color="secondary"
-            variant="contained"
-            onClick={toggleLanguage}
-            sx={{ ml: 2 }}
-          >
-            {t('nav.langToggle')}
           </Button>
         </Toolbar>
       </Container>

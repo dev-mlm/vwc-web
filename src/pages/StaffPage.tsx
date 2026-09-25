@@ -4,10 +4,12 @@ import {
   Stack,
   Box,
   Grid,
+  Divider,
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import jazminProfile from '../assets/profiles/jazmin-profile.avif';
 import zamirProfile from '../assets/profiles/zamir-profile.avif';
+import { InfoSection } from './Home/InfoSection';
 
 // -----------------------------------------------------------------------------
 //  StaffPage Component
@@ -40,6 +42,8 @@ export const StaffPage = () => {
             {t('staff.description')}
           </Typography>
         </Stack>
+
+        <Divider />
 
         {/* Jazmin's Section */}
         <Grid
@@ -79,6 +83,8 @@ export const StaffPage = () => {
           </Grid>
         </Grid>
 
+        <Divider />
+
         {/* Zamir's Section */}
         <Grid
           container
@@ -115,6 +121,9 @@ export const StaffPage = () => {
           </Grid>
         </Grid>
 
+        <Divider />
+
+        <InfoSection />
       </Stack>
     </Container>
   );
