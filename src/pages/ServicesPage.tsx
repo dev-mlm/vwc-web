@@ -7,12 +7,12 @@ import {
   Grid,
   Stack
 } from '@mui/material';
-import zamirActionOne from '../assets/zamir-action-1.avif';
-import zamirActionTwo from '../assets/zamir-action-2.avif';
-import jazminActionOne from '../assets/jazmin-action-1.avif';
-import jazminActionTwo from '../assets/jazmin-action-2.avif';
-import officeOne from '../assets/office-1.avif';
-import officeTwo from '../assets/office-2.avif';
+import zamirActionOne from '../assets/services/jazmin-action-1.avif';
+import zamirActionTwo from '../assets/services/jazmin-action-2.avif';
+import jazminActionOne from '../assets/services/jazmin-action-1.avif';
+import jazminActionTwo from '../assets/services/jazmin-action-2.avif';
+import officeOne from '../assets/services/office-1.avif';
+import officeTwo from '../assets/services/office-2.avif';
 import { useTranslation } from 'react-i18next';
 
 // -----------------------------------------------------------------------------

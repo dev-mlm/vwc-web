@@ -6,8 +6,8 @@ import {
   Grid,
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import jazminProfile from '../assets/jazmin-profile.avif';
-import zamirProfile from '../assets/zamir-profile.avif';
+import jazminProfile from '../assets/profiles/jazmin-profile.avif';
+import zamirProfile from '../assets/profiles/zamir-profile.avif';
 
 // -----------------------------------------------------------------------------
 //  StaffPage Component

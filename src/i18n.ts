@@ -37,6 +37,11 @@ const resources = {
         messagePh: 'Provide a brief description of what is going on.',
         messageReq: 'Reason for visit is required',
       },
+      mapView: {
+        infoWindow: {
+          desc: 'Local chiropractic clinic focused on your wellness and health.'
+        },
+      },
       home: {
         title: 'Welcome to Our App',
         description: 'Your one-stop solution for quality services.',
@@ -155,6 +160,11 @@ const resources = {
         message: 'Motivo de la visita',
         messagePh: 'Proporcione una breve descripción de lo que está sucediendo.',
         messageReq: 'El motivo de la visita es obligatorio',
+      },
+      mapView: {
+        infoWindow: {
+          desc: 'Clínica quiropráctica local centrada en su bienestar y salud.'
+        },
       },
       home: {
         title: 'Bienvenido a Nuestra Aplicación',
