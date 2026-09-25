@@ -1,6 +1,7 @@
 import { Container, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { MapView } from '../components/molecules/MapView';
+import { ReviewsSection } from './ReviewsSection';
+import { MapView } from '../../components/molecules/MapView';
 
 // -----------------------------------------------------------------------------
 //  HomePage Component
@@ -13,6 +14,7 @@ export const HomePage = () => {
       <Typography variant="h4" gutterBottom>{t('home.title')}</Typography>
       <Typography variant="body1">{t('home.description')}</Typography>
 
+      <ReviewsSection />
       <MapView />
     </Container>
   );

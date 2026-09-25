@@ -1,8 +1,9 @@
+import 'react-google-reviews/dist/index.css';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import theme from './theme';
 import { MainLayout } from './layouts/Layout';
-import { HomePage } from './pages/HomePage';
+import { HomePage } from './pages/Home/HomePage';
 import { StaffPage } from './pages/StaffPage';
 import { ServicesPage } from './pages/ServicesPage';
 
