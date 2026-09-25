@@ -49,9 +49,11 @@ const resources = {
           title: "",
           desc: "Helping patients of every age to grow stronger, healthier lives through spinal alignment, movement, and rehabilitative therapies that support the body’s natural ability to heal",
         },
-        section_why: {
-          title: "Why Chiropractic?",
-          desc: "At Vida Wellness Center, we believe a vibrant life starts with a healthy spine, beginning in the womb and continuing until you’re grey and full of wisdom. Our mission is to deliver targeted chiropractic adjustments, movement, and rehabilitative therapies that optimize spinal alignment and unlock the body's natural ability to heal. This vital care is designed for every generation — moms, kiddos, athletes, dads, and grandparents alike. By precisely aligning the spine, we remove interference to create a strong, resilient nervous system, ultimately empowering a stronger body and mind for patients of every age.",
+        section_whyVida: {
+          title: "Why Vida?",
+          desc1: "At Vida Wellness Center, we believe a vibrant life starts with a healthy spine, beginning in the womb and continuing until you’re grey and full of wisdom.",
+          desc2: "Our mission is to deliver targeted chiropractic adjustments, movement, and rehabilitative therapies that optimize spinal alignment and unlock the body's natural ability to heal. This vital care is designed for every generation — moms, kiddos, athletes, dads, and grandparents alike.",
+          desc3: "By precisely aligning the spine, we remove interference to create a strong, resilient nervous system, ultimately empowering a stronger body and mind for patients of every age.",
         },
         section_reviews: {
           title: "What our customers are saying",
@@ -176,9 +178,11 @@ const resources = {
           title: "",
           desc: "Ayudamos a pacientes de todas las edades a vivir vidas más fuertes y sanas mediante alineación espinal, movimiento y terapias de rehabilitación que apoyan la sanación natural del cuerpo!",
         },
-        section_why: {
-          title: "¿Por qué Quiropracita?",
-          desc: "En Vida Wellness Center, creemos que una vida vibrante comienza con una columna sana, desde el útero hasta la vejez. Nuestra misión es brindar ajustes quiroprácticos específicos, movimiento y terapias de rehabilitación que optimizan la alineación espinal y activan la capacidad de autocuración del cuerpo. Este cuidado vital está diseñado para todas las generaciones: mamás, niños, atletas, papás y abuelos por igual. Al alinear la columna con precisión, eliminamos interferencias para crear un sistema nervioso fuerte y resistente, fortaleciendo el cuerpo y la mente de pacientes de todas las edades.",
+        section_whyVida: {
+          title: "¿Por qué Vida?",
+          desc1: "En Vida Wellness Center, creemos que una vida plena comienza con una columna vertebral sana, desde el vientre materno y a lo largo de toda la vida, hasta llegar a la etapa de las canas y la sabiduría.",
+          desc2: "Nuestra misión es ofrecer ajustes quiroprácticos precisos, así como terapias de movimiento y rehabilitación, para optimizar la alineación de la columna y liberar la capacidad natural del cuerpo para sanar. Esta atención esencial está diseñada para todas las generaciones: desde madres, niños y atletas hasta padres y abuelos.",
+          desc3: "Al alinear la columna vertebral con precisión, eliminamos las interferencias para crear un sistema nervioso fuerte y resiliente, fortaleciendo así el cuerpo y la mente de pacientes de todas las edades.",
         },
         section_reviews: {
           title: "Lo que nuestros clientes están diciendo",

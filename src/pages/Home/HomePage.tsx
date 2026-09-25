@@ -1,5 +1,6 @@
-import { Container, Typography } from '@mui/material';
+import { Container, Typography, Divider } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { WhyVidaSection } from './WhyVidaSection';
 import { ReviewsSection } from './ReviewsSection';
 import { MapView } from '../../components/molecules/MapView';
 
@@ -14,8 +15,21 @@ export const HomePage = () => {
       <Typography variant="h4" gutterBottom>{t('home.title')}</Typography>
       <Typography variant="body1">{t('home.description')}</Typography>
 
+      <Divider />
+
+      {/* Why Vida Section */}
+      <WhyVidaSection />
+
+      <Divider />
+
+      {/* Reviews Section */}
       <ReviewsSection />
+
+      <Divider />
+
+      {/* Map Section */}
       <MapView />
+
     </Container>
   );
 }
