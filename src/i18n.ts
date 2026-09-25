@@ -58,11 +58,22 @@ const resources = {
         },
       },
       home: {
-        title: 'Welcome to Our App',
-        description: 'Your one-stop solution for quality services.',
         section_hero: {
-          title: "",
+          title: "Your Journey to Health Begins Here",
+          subtitle: "Fort Collins Chiropractic & Wellness",
           desc: "Helping patients of every age to grow stronger, healthier lives through spinal alignment, movement, and rehabilitative therapies that support the body’s natural ability to heal",
+          staffCard: {
+            title: 'Staff',
+            desc: 'Learn more about our chiropractors!',
+          },
+          servicesCard: {
+            title: 'Services',
+            desc: 'Learn more about the chiropractic techniques we offer!',
+          },
+          saleCard: {
+            title: 'New Patient Special',
+            desc: 'Learn more about a great deal for new clients!',
+          },
         },
         section_whyVida: {
           title: "Why Vida?",
@@ -205,8 +216,21 @@ const resources = {
         title: 'Bienvenido a Nuestra Aplicación',
         description: 'Su solución integral para servicios de calidad.',
         section_hero: {
-          title: "",
+          title: "Tu camino hacia la salud comienza aquí.",
+          subtitle: "Quiropráctica y Bienestar en Fort Collins",
           desc: "Ayudamos a pacientes de todas las edades a vivir vidas más fuertes y sanas mediante alineación espinal, movimiento y terapias de rehabilitación que apoyan la sanación natural del cuerpo!",
+          staffCard: {
+            title: 'Personal',
+            desc: '¡Conozca más sobre nuestros quiroprácticos!',
+          },
+          servicesCard: {
+            title: 'Servicios',
+            desc: '¡Obtenga más información sobre las técnicas quiroprácticas que ofrecemos!',
+          },
+          saleCard: {
+            title: 'Oferta especial para nuevos pacientes',
+            desc: '¡Obtenga más información sobre una excelente oferta para nuevos clientes!',
+          },
         },
         section_whyVida: {
           title: "¿Por qué Vida?",

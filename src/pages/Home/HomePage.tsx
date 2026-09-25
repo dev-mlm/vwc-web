@@ -1,5 +1,5 @@
-import { Container, Typography, Divider } from '@mui/material';
-import { useTranslation } from 'react-i18next';
+import { Container, Divider } from '@mui/material';
+import { HeroSection } from './HeroSection';
 import { WhyVidaSection } from './WhyVidaSection';
 import { ReviewsSection } from './ReviewsSection';
 import { InfoSection } from './InfoSection';
@@ -9,11 +9,11 @@ import { InfoSection } from './InfoSection';
 // -----------------------------------------------------------------------------
 
 export const HomePage = () => {
-  const { t } = useTranslation();
   return (
     <Container sx={{ py: 4 }}>
-      <Typography variant="h4" gutterBottom>{t('home.title')}</Typography>
-      <Typography variant="body1">{t('home.description')}</Typography>
+
+      {/* Hero Section */}
+      <HeroSection />
 
       <Divider />
 
