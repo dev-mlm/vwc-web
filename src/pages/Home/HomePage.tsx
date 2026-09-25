@@ -2,7 +2,7 @@ import { Container, Typography, Divider } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { WhyVidaSection } from './WhyVidaSection';
 import { ReviewsSection } from './ReviewsSection';
-import { MapView } from '../../components/molecules/MapView';
+import { InfoSection } from './InfoSection';
 
 // -----------------------------------------------------------------------------
 //  HomePage Component
@@ -27,8 +27,8 @@ export const HomePage = () => {
 
       <Divider />
 
-      {/* Map Section */}
-      <MapView />
+      {/* Info Section */}
+      <InfoSection />
 
     </Container>
   );

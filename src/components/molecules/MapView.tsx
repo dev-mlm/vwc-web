@@ -6,7 +6,7 @@ import {
   InfoWindow,
   useAdvancedMarkerRef,
 } from '@vis.gl/react-google-maps';
-import { Typography } from '@mui/material';
+import { Card, CardHeader, CardContent, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
 // -----------------------------------------------------------------------------
@@ -22,8 +22,9 @@ interface MapViewProps {
 //  Constants
 // -----------------------------------------------------------------------------
 
-// Define predefined location coordinates (e.g., Empire State Building, NYC)
-const PREDEFINED_LOCATION = {
+const ADDRESS = '2111 S. College Ave, Ste B';
+const CITY_N_ZIP = 'Fort Collins, CO 80525';
+const LOCATION = {
   lat: 40.56001,
   lng: -105.07904,
 };
@@ -50,47 +51,64 @@ export const MapView = ({
   // ---------------------------------------------
 
   return (
-    <APIProvider apiKey={apiKey}>
-      {/* Ensure the map container has an explicit width and height */}
-      <div
-        style={{
-          width: '100%',
-          height: '400px',
-        }}
-      >
-        <Map
-          defaultCenter={PREDEFINED_LOCATION}
-          defaultZoom={zoom}
-          gestureHandling="greedy"
-          disableDefaultUI={false}
-          mapId={import.meta.env.VITE_GOOGLE_MAP_ID}
-        >
-          <AdvancedMarker
-            ref={markerRef}
-            position={PREDEFINED_LOCATION}
-            title="Click to view info"
-            onClick={() => setIsInfoOpen(true)}
-          />
+    <Card sx={{ width: '100%' }}>
+      <CardHeader
+        title={t('mapView.title')}
+        subheader={
+          <>
+            {ADDRESS}
+            <br />
+            {CITY_N_ZIP}
+          </>
+        }
+      />
 
-          {isInfoOpen && (
-            <InfoWindow
-              anchor={marker}
-              onCloseClick={() => setIsInfoOpen(false)}
-              style={{ maxWidth: '240px' }}
-              headerContent={
-                <Typography>Vida Wellness Center</Typography>
-              }
+      <CardContent>
+        <APIProvider apiKey={apiKey}>
+          {/* Ensure the map container has an explicit width and height */}
+          <div
+            style={{
+              width: '100%',
+              height: '340px',
+              border: '2px solid black',
+              borderRadius: '2px'
+            }}
+          >
+            <Map
+              defaultCenter={LOCATION}
+              defaultZoom={zoom}
+              gestureHandling="greedy"
+              disableDefaultUI={false}
+              mapId={import.meta.env.VITE_GOOGLE_MAP_ID}
             >
-              <Typography
-                variant="body2"
-                color="textSecondary"
-              >
-                {t('mapView.infoWindow.desc')}
-              </Typography>
-            </InfoWindow>
-          )}
-        </Map>
-      </div>
-    </APIProvider >
+              <AdvancedMarker
+                ref={markerRef}
+                position={LOCATION}
+                title="Click to view info"
+                onClick={() => setIsInfoOpen(true)}
+              />
+
+              {isInfoOpen && (
+                <InfoWindow
+                  anchor={marker}
+                  onCloseClick={() => setIsInfoOpen(false)}
+                  style={{ maxWidth: '240px' }}
+                  headerContent={
+                    <Typography>Vida Wellness Center</Typography>
+                  }
+                >
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                  >
+                    {t('mapView.infoWindow.desc')}
+                  </Typography>
+                </InfoWindow>
+              )}
+            </Map>
+          </div>
+        </APIProvider >
+      </CardContent>
+    </Card>
   );
 };

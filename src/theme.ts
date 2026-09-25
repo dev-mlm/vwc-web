@@ -12,6 +12,22 @@ const theme = createTheme({
       default: '#D9D9D9'
     }
   },
+  components: {
+    MuiCardHeader: {
+      styleOverrides: {
+        root: {
+          paddingBottom: 0,
+        },
+      },
+    },
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          paddingTop: 12,
+        },
+      },
+    },
+  },
 });
 
 export default theme;

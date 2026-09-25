@@ -37,7 +37,22 @@ const resources = {
         messagePh: 'Provide a brief description of what is going on.',
         messageReq: 'Reason for visit is required',
       },
+      businessHours: {
+        title: 'Hours of Operation',
+        desc: 'Open seven days a week!',
+        days: {
+          monday: 'Monday',
+          tuesday: 'Tuesday',
+          wednesday: 'Wednesday',
+          thursday: 'Thursday',
+          friday: 'Friday',
+          saturday: 'Saturday',
+          sunday: 'Sunday',
+          today: 'Today',
+        },
+      },
       mapView: {
+        title: 'Location',
         infoWindow: {
           desc: 'Local chiropractic clinic focused on your wellness and health.'
         },
@@ -166,7 +181,22 @@ const resources = {
         messagePh: 'Proporcione una breve descripción de lo que está sucediendo.',
         messageReq: 'El motivo de la visita es obligatorio',
       },
+      businessHours: {
+        title: 'Horario de atención',
+        desc: '¡Abierto los siete días de la semana!',
+        days: {
+          monday: 'Lunes',
+          tuesday: 'Martes',
+          wednesday: 'Miércoles',
+          thursday: 'Jueves',
+          friday: 'Viernes',
+          saturday: 'Sábado',
+          sunday: 'Domingo',
+          today: 'Hoy',
+        },
+      },
       mapView: {
+        title: 'Ubicación',
         infoWindow: {
           desc: 'Clínica quiropráctica local centrada en su bienestar y salud.'
         },
