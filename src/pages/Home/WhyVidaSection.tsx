@@ -1,4 +1,5 @@
-import { Container, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
+import { ResponsiveContainer } from '../../components/atoms/ResponsiveContainer';
 import { useTranslation } from 'react-i18next';
 
 // -----------------------------------------------------------------------------
@@ -18,7 +19,7 @@ export const WhyVidaSection = () => {
   // ---------------------------------------------
 
   return (
-    <Container sx={{ p: 4 }}>
+    <ResponsiveContainer>
       <Stack spacing={2}>
         <Typography
           variant="h4"
@@ -40,6 +41,6 @@ export const WhyVidaSection = () => {
           ))}
         </Stack>
       </Stack>
-    </Container>
+    </ResponsiveContainer>
   );
 };

@@ -1,10 +1,11 @@
-import { Container, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import {
   GroupsRounded,
   AccessibilityNewRounded,
   LocalOfferRounded,
 } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
+import { ResponsiveContainer } from "../atoms/ResponsiveContainer";
 import { NavigationCard, type NavigationCardProps } from "../atoms/NavigationCard";
 
 // -----------------------------------------------------------------------------
@@ -44,7 +45,7 @@ export const HeroCards = () => {
   // ---------------------------------------------
 
   return (
-    <Container sx={{ p: 4 }}>
+    <ResponsiveContainer>
       <Grid
         container
         spacing={4}
@@ -61,6 +62,6 @@ export const HeroCards = () => {
           </Grid>
         ))}
       </Grid>
-    </Container>
+    </ResponsiveContainer>
   );
 };

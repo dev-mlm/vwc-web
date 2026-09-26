@@ -1,4 +1,4 @@
-import { Container, Divider } from '@mui/material';
+import { Container, Divider, Stack } from '@mui/material';
 import { HeroSection } from './HeroSection';
 import { WhyVidaSection } from './WhyVidaSection';
 import { ReviewsSection } from './ReviewsSection';
@@ -11,25 +11,27 @@ import { InfoSection } from './InfoSection';
 export const HomePage = () => {
   return (
     <Container sx={{ py: 4 }}>
+      <Stack spacing={4}>
 
-      {/* Hero Section */}
-      <HeroSection />
+        {/* Hero Section */}
+        <HeroSection />
 
-      <Divider />
+        <Divider />
 
-      {/* Why Vida Section */}
-      <WhyVidaSection />
+        {/* Why Vida Section */}
+        <WhyVidaSection />
 
-      <Divider />
+        <Divider />
 
-      {/* Reviews Section */}
-      <ReviewsSection />
+        {/* Reviews Section */}
+        <ReviewsSection />
 
-      <Divider />
+        <Divider />
 
-      {/* Info Section */}
-      <InfoSection />
+        {/* Info Section */}
+        <InfoSection />
 
+      </Stack>
     </Container>
   );
 }

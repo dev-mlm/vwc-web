@@ -1,4 +1,5 @@
-import { Container, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
+import { ResponsiveContainer } from '../../components/atoms/ResponsiveContainer';
 import { GoogleReviews } from '../../components/molecules/GoogleReviews';
 import { useTranslation } from 'react-i18next';
 
@@ -14,7 +15,7 @@ export const ReviewsSection = () => {
   // ---------------------------------------------
 
   return (
-    <Container sx={{ p: 4 }}>
+    <ResponsiveContainer>
       <Stack spacing={2}>
         <Typography
           variant="h4"
@@ -26,6 +27,6 @@ export const ReviewsSection = () => {
 
         <GoogleReviews />
       </Stack>
-    </Container>
+    </ResponsiveContainer>
   );
 };

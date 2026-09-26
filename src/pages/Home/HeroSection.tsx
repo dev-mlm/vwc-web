@@ -30,70 +30,74 @@ export const HeroSection = () => {
 
   return (
     <>
-      <Container sx={{ p: 4 }}>
+      <Container sx={{ p: isMobile ? 0 : 4 }}>
         <Stack
-          direction={isMobile ? "column-reverse" : "row"}
-          spacing={isMobile ? 4 : 6}
-          sx={{
-            justifyContent: "center",
-            alignItems: "center"
-          }}
+          spacing={4}
         >
-          <Box>
-            <Box
-              component="img"
-              src={largeLogo}
-              alt="Vida Wellness Center"
-              sx={(theme) => ({
-                width: '100%',
-                height: 'auto',
-                border: `4px solid ${theme.palette.text.disabled}`,
-                borderRadius: 2,
-              })}
-            />
-          </Box>
-
           <Stack
-            spacing={2}
+            direction={isMobile ? "column-reverse" : "row"}
+            spacing={isMobile ? 4 : 6}
             sx={{
-              justifyContent: 'center',
-              alignItems: isMobile ? 'center' : 'left',
+              justifyContent: "center",
+              alignItems: "center"
             }}
           >
+            <Box>
+              <Box
+                component="img"
+                src={largeLogo}
+                alt="Vida Wellness Center"
+                sx={(theme) => ({
+                  width: '100%',
+                  height: 'auto',
+                  border: `4px solid ${theme.palette.text.disabled}`,
+                  borderRadius: 2,
+                })}
+              />
+            </Box>
 
-            <Typography
-              variant={isMobile ? "h3" : "h2"}
-              align={isMobile ? "center" : "left"}
+            <Stack
+              spacing={2}
+              sx={{
+                justifyContent: 'center',
+                alignItems: isMobile ? 'center' : 'left',
+              }}
             >
-              {t('home.section_hero.title')}
-            </Typography>
 
-            <Typography
-              variant={isMobile ? "h5" : "h4"}
-              align={isMobile ? "center" : "left"}
-              color="textSecondary"
-            >
-              {t('home.section_hero.subtitle')}
-            </Typography>
+              <Typography
+                variant={isMobile ? "h3" : "h2"}
+                align={isMobile ? "center" : "left"}
+              >
+                {t('home.section_hero.title')}
+              </Typography>
 
-            {/* Consultation Button */}
-            <Button
-              size="large"
-              color="secondary"
-              variant="contained"
-              onClick={toggleDialog}
-              sx={{ width: 'fit-content' }}
-            >
-              {t('nav.consultation')}
-            </Button>
+              <Typography
+                variant={isMobile ? "h5" : "h4"}
+                align={isMobile ? "center" : "left"}
+                color="textSecondary"
+              >
+                {t('home.section_hero.subtitle')}
+              </Typography>
 
-            {/* Language Button */}
-            <LanguageBtn />
-          </Stack>
+              {/* Consultation Button */}
+              <Button
+                size="large"
+                color="secondary"
+                variant="contained"
+                onClick={toggleDialog}
+                sx={{ width: 'fit-content' }}
+              >
+                {t('nav.consultation')}
+              </Button>
+
+              {/* Language Button */}
+              <LanguageBtn />
+            </Stack>
+          </Stack >
+
+          <HeroCards />
         </Stack >
       </Container>
-
-      <HeroCards />
 
       <ConsultationDialog open={isDialogOpen} onClose={toggleDialog} />
     </>
