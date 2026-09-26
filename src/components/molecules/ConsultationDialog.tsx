@@ -9,7 +9,9 @@ import {
   CircularProgress,
   Stack,
   Alert,
+  IconButton,
 } from "@mui/material";
+import { Close } from "@mui/icons-material";
 import { useForm, Controller, type SubmitHandler } from "react-hook-form";
 import { matchIsValidTel } from "mui-tel-input";
 import { useTranslation } from 'react-i18next';
@@ -124,8 +126,20 @@ export const ConsultationDialog = ({
       fullWidth
       maxWidth="md"
     >
-      <DialogTitle>
+      <DialogTitle sx={{ position: "relative", pr: 6 }}>
         {t('consultation.title')}
+
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
+          sx={{
+            position: "absolute",
+            right: 8,
+            top: 8,
+          }}
+        >
+          <Close />
+        </IconButton>
       </DialogTitle>
 
       <form onSubmit={handleSubmit(onSubmit)}>

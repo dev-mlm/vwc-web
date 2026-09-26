@@ -8,7 +8,9 @@ import {
   Stack,
   Chip,
   Typography,
+  IconButton,
 } from "@mui/material";
+import { Close } from "@mui/icons-material";
 import { useTranslation } from 'react-i18next';
 
 // -----------------------------------------------------------------------------
@@ -71,8 +73,20 @@ export const ServiceDialog = ({
       fullWidth
       maxWidth="md"
     >
-      <DialogTitle>
+      <DialogTitle sx={{ position: "relative", pr: 6 }}>
         {data.title}
+
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
+          sx={{
+            position: "absolute",
+            right: 8,
+            top: 8,
+          }}
+        >
+          <Close />
+        </IconButton>
       </DialogTitle>
 
       <DialogContent>
@@ -90,7 +104,12 @@ export const ServiceDialog = ({
               <Typography variant="h6">
                 {t('services.section_techniques.title')}
               </Typography>
-              <Stack direction="row" spacing={2}>
+              <Stack
+                direction="row"
+                spacing={2}
+                useFlexGap
+                sx={{ flexWrap: "wrap" }}
+              >
                 {data?.techs.map((tech) => (
                   <Chip
                     key={tech.title}
