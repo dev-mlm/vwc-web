@@ -34,11 +34,15 @@ export const DesktopNavBar = ({
       <Container maxWidth="lg">
         <Toolbar>
           <Typography
-            variant="h6"
+            variant="h5"
             align="left"
-            sx={{ flexGrow: 1 }}
+            sx={{
+              flexGrow: 1,
+              textTransform: "uppercase",
+              fontFamily: '"Cormorant Garamond", serif',
+            }}
           >
-            The Vida Wellness Center
+            Vida Wellness
           </Typography>
 
           {/* Page Buttons */}

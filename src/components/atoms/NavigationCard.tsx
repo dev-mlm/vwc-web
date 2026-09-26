@@ -61,7 +61,7 @@ export const NavigationCard = ({
       </CardMedia>
 
       <CardContent>
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h5" gutterBottom>
           {title}
         </Typography>
 

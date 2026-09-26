@@ -66,6 +66,46 @@ const theme = createTheme({
     },
     divider: colors.neutral[300],
   },
+  typography: {
+    fontFamily: '"DM Sans", sans-serif',
+    h1: {
+      fontFamily: '"Cormorant Garamond", serif',
+      fontWeight: 600,
+    },
+    h2: {
+      fontFamily: '"Cormorant Garamond", serif',
+      fontWeight: 600,
+    },
+    h3: {
+      fontFamily: '"Cormorant Garamond", serif',
+      fontWeight: 600,
+    },
+    h4: {
+      fontFamily: '"DM Sans", sans-serif',
+      fontWeight: 500,
+    },
+    h5: {
+      fontFamily: '"DM Sans", sans-serif',
+      fontWeight: 500,
+    },
+    h6: {
+      fontFamily: '"DM Sans", sans-serif',
+      fontWeight: 500,
+    },
+    body1: {
+      fontFamily: '"DM Sans", sans-serif',
+      fontWeight: 400,
+    },
+    body2: {
+      fontFamily: '"DM Sans", sans-serif',
+      fontWeight: 400,
+    },
+    button: {
+      fontFamily: '"DM Sans", sans-serif',
+      fontWeight: 600,
+      textTransform: "none",
+    },
+  },
   components: {
     MuiCardHeader: {
       styleOverrides: {
