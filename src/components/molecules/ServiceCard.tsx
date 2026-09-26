@@ -46,7 +46,6 @@ export const ServiceCard = ({
       <Card
         sx={{
           height: '100%',
-          maxWidth: 345,
           display: 'flex',
           flexDirection: 'column',
         }}

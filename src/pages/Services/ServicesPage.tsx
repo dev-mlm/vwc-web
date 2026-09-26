@@ -44,7 +44,11 @@ export const ServicesPage = () => {
 
         <Divider />
 
-        <Grid container spacing={3}>
+        <Grid
+          container
+          rowSpacing={3}
+          columnSpacing={3}
+        >
           {services.map((service) => (
             <Grid key={service.id} size={{ xs: 12, sm: 6, md: 4 }}>
               <ServiceCard
