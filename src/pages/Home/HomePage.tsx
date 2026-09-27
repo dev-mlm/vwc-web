@@ -10,7 +10,10 @@ import { InfoSection } from './InfoSection';
 
 export const HomePage = () => {
   return (
-    <Stack spacing={4}>
+    <Stack
+      spacing={4}
+      sx={{ pb: 4 }}
+    >
 
       {/* Hero Section */}
       <HeroSection />
@@ -23,21 +26,23 @@ export const HomePage = () => {
         }}
       >
         <Container>
-          <Divider />
+          <Stack spacing={4}>
+            <Divider />
 
-          {/* Why Vida Section */}
-          <WhyVidaSection />
+            {/* Why Vida Section */}
+            <WhyVidaSection />
 
-          <Divider />
+            <Divider />
 
-          {/* Reviews Section */}
-          <ReviewsSection />
+            {/* Reviews Section */}
+            <ReviewsSection />
 
-          <Divider />
+            <Divider />
 
-          {/* Info Section */}
-          <InfoSection />
+            {/* Info Section */}
+            <InfoSection />
 
+          </Stack>
         </Container>
       </Box>
     </Stack>

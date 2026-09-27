@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { NavigationCard, type NavigationCardProps } from "../atoms/NavigationCard";
 import Staff from "../../assets/nav-cards/StaffIcon.png";
@@ -52,23 +52,28 @@ export const HeroCards = () => {
 
   return (
     <>
-      <Grid
-        container
-        rowSpacing={3}
-        columnSpacing={3}
-        sx={{ alignItems: 'center' }}
-      >
-        {navCardData.map((card) => (
-          <Grid size={{ xs: 12, md: 4 }}>
-            <NavigationCard
-              title={card.title}
-              desc={card.desc}
-              action={card.action}
-              image={card.image}
-            />
-          </Grid>
-        ))}
-      </Grid>
+      <Container>
+        <Grid
+          container
+          rowSpacing={3}
+          columnSpacing={3}
+          sx={{ alignItems: 'stretch' }}
+        >
+          {navCardData.map((card) => (
+            <Grid
+              size={{ xs: 12, md: 4 }}
+              sx={{ display: 'flex' }}
+            >
+              <NavigationCard
+                title={card.title}
+                desc={card.desc}
+                action={card.action}
+                image={card.image}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
 
       <ContactDialog
         open={isDialogOpen}

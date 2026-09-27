@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { ContactDialog } from "../../components/molecules/ContactDialog";
 import { HeroCards } from "../../components/molecules/HeroCards";
 import { useScreensize } from "../../hooks/useScreensize";
-import largeLogo from "../../assets/logo/logo-square.png";
+import Logo from "../../assets/logo/Logo-N-Text.png";
 import { LanguageBtn } from "../../components/molecules/LanguageBtn";
 import heroBackground from "../../assets/HeroBg.png";
 
@@ -14,7 +14,11 @@ import heroBackground from "../../assets/HeroBg.png";
 
 export const HeroSection = () => {
   const { t } = useTranslation();
-  const { isMobile } = useScreensize();
+  const {
+    isMobile,
+    isTablet,
+    isDesktop,
+  } = useScreensize();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   // ---------------------------------------------
@@ -85,38 +89,53 @@ export const HeroSection = () => {
               spacing={4}
             >
               <Stack
-                direction={isMobile ? "column-reverse" : "row"}
-                spacing={isMobile ? 4 : 6}
+                direction={(isMobile || isTablet) ? "column" : "row"}
+                spacing={(isMobile || isTablet) ? 2 : 6}
                 sx={{
+                  py: (isMobile || isTablet) ? 0 : 8,
                   justifyContent: "center",
                   alignItems: "center"
                 }}
               >
-                <Box>
+                <Box
+                  sx={{
+                    ...(!isDesktop && {
+                      display: 'flex',
+                      justifyContent: 'center',
+                      pt: 2,
+                    })
+                  }}
+                >
                   <Box
                     component="img"
-                    src={largeLogo}
+                    src={Logo}
                     alt="Vida Wellness Center"
-                    sx={(theme) => ({
-                      width: '100%',
+                    sx={{
+                      width: isDesktop ? '100%' : '70%',
                       height: 'auto',
-                      border: `4px solid ${theme.palette.text.disabled}`,
                       borderRadius: 2,
-                    })}
+                    }}
                   />
                 </Box>
 
                 <Stack
                   spacing={2}
                   sx={{
+                    py: isDesktop ? 8 : 0,
+                    px: 4,
                     justifyContent: 'center',
                     alignItems: isMobile ? 'center' : 'left',
                   }}
                 >
 
                   <Typography
-                    variant={isMobile ? "h3" : "h2"}
+                    variant={
+                      isMobile
+                        ? "h3"
+                        : "h2"
+                    }
                     align={isMobile ? "center" : "left"}
+                    sx={{ textTransform: 'uppercase' }}
                   >
                     {t('home.section_hero.title')}
                   </Typography>
