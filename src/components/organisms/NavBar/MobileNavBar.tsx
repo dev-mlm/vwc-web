@@ -15,7 +15,7 @@ import {
   Divider,
 } from '@mui/material';
 import {
-  MenuRounded,
+  Menu,
   HomeRounded,
   PersonRounded,
   SpaRounded,
@@ -134,18 +134,28 @@ export const MobileNavBar = ({
     <>
       <AppBar position="static">
         <Toolbar>
+
+          {/* Logo */}
           <Typography
-            variant="h6"
-            align="left"
-            sx={{ flexGrow: 1 }}
+            variant="h5"
+            sx={{
+              flexGrow: 1,
+              justifySelf: 'start',
+              textTransform: "uppercase",
+              letterSpacing: '0.2em',
+              fontFamily: '"Cormorant Garamond", serif',
+            }}
           >
-            The Vida Wellness Center
+            {t('nav.vida')}
           </Typography>
 
           <IconButton
             onClick={toggleMobileDrawer}
+            sx={(theme) => ({
+              color: theme.palette.background.paper
+            })}
           >
-            <MenuRounded />
+            <Menu fontSize='large' />
           </IconButton>
         </Toolbar>
       </AppBar>

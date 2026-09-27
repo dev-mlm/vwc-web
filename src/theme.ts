@@ -4,7 +4,7 @@ import { createTheme } from '@mui/material/styles';
 //  Theme Colors
 // -----------------------------------------------------------------------------
 
-const colors = {
+export const colors = {
   primary: {
     50: "#F4F6F0",  // Very subtle backgrounds
     100: "#E5E9DE", // Light backgrounds or Hover
