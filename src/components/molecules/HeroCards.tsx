@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Grid } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { NavigationCard, type NavigationCardProps } from "../atoms/NavigationCard";
-import Staff from "../../assets/nav-cards/Staff.png";
-import Services from "../../assets/nav-cards/Services.png";
-import NewPatientSpecial from "../../assets/nav-cards/New-Patient-Special.png";
+import Staff from "../../assets/nav-cards/StaffIcon.png";
+import Services from "../../assets/nav-cards/Chiro Services.png";
+import SaleTag from "../../assets/nav-cards/Sale Tag.png";
 import { useNavigate } from "react-router-dom";
 import { ContactDialog } from "./ContactDialog";
 
@@ -36,7 +36,7 @@ export const HeroCards = () => {
       title: t('home.section_hero.saleCard.title'),
       desc: t('home.section_hero.saleCard.desc'),
       action: toggleDialog,
-      image: NewPatientSpecial,
+      image: SaleTag,
     },
     {
       title: t('home.section_hero.servicesCard.title'),

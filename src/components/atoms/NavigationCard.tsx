@@ -45,7 +45,7 @@ export const NavigationCard = ({
     >
       {/* Image */}
       <CardMedia
-        sx={{ height: 210 }}
+        sx={{ height: 100 }}
         image={image}
         title={title}
       />
