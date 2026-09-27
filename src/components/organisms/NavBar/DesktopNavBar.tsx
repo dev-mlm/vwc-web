@@ -46,9 +46,33 @@ export const DesktopNavBar = ({
           </Typography>
 
           {/* Page Buttons */}
-          <Button color="inherit" component={Link} to="/">{t('nav.home')}</Button>
-          <Button color="inherit" component={Link} to="/staff">{t('nav.staff')}</Button>
-          <Button color="inherit" component={Link} to="/services">{t('nav.services')}</Button>
+          <Button
+            color="inherit"
+            component={Link}
+            to="/"
+          >
+            <Typography sx={{ textTransform: 'uppercase' }}>
+              {t('nav.home')}
+            </Typography>
+          </Button>
+          <Button
+            color="inherit"
+            component={Link}
+            to="/staff"
+          >
+            <Typography sx={{ textTransform: 'uppercase' }}>
+              {t('nav.staff')}
+            </Typography>
+          </Button>
+          <Button
+            color="inherit"
+            component={Link}
+            to="/services"
+          >
+            <Typography sx={{ textTransform: 'uppercase' }}>
+              {t('nav.services')}
+            </Typography>
+          </Button>
 
           {/* Consultation Button */}
           <Button
@@ -57,7 +81,9 @@ export const DesktopNavBar = ({
             onClick={toggleDialog}
             sx={{ ml: 2 }}
           >
-            {t('nav.consultation')}
+            <Typography sx={{ textTransform: 'uppercase' }}>
+              {t('nav.consultation')}
+            </Typography>
           </Button>
         </Toolbar>
       </Container>
