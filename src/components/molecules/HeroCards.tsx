@@ -1,12 +1,10 @@
 import { Grid } from "@mui/material";
-import {
-  GroupsRounded,
-  AccessibilityNewRounded,
-  LocalOfferRounded,
-} from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
 import { ResponsiveContainer } from "../atoms/ResponsiveContainer";
 import { NavigationCard, type NavigationCardProps } from "../atoms/NavigationCard";
+import Staff from "../../assets/nav-cards/Staff.png";
+import Services from "../../assets/nav-cards/Services.png";
+import NewPatientSpecial from "../../assets/nav-cards/New-Patient-Special.png";
 
 // -----------------------------------------------------------------------------
 //  Types
@@ -24,19 +22,19 @@ export const HeroCards = () => {
       title: t('home.section_hero.staffCard.title'),
       desc: t('home.section_hero.staffCard.desc'),
       path: "/staff",
-      icon: <GroupsRounded />,
+      image: Staff,
     },
     {
       title: t('home.section_hero.servicesCard.title'),
       desc: t('home.section_hero.servicesCard.desc'),
       path: "/services",
-      icon: <AccessibilityNewRounded />,
+      image: Services,
     },
     {
       title: t('home.section_hero.saleCard.title'),
       desc: t('home.section_hero.saleCard.desc'),
       path: "/services",
-      icon: <LocalOfferRounded />,
+      image: NewPatientSpecial,
     },
   ]
 
@@ -57,7 +55,7 @@ export const HeroCards = () => {
               title={card.title}
               desc={card.desc}
               path={card.path}
-              icon={card.icon}
+              image={card.image}
             />
           </Grid>
         ))}

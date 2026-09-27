@@ -1,6 +1,4 @@
-import React from 'react';
 import { Card, CardMedia, CardContent, Typography } from "@mui/material";
-import { type SvgIconComponent } from "@mui/icons-material";
 import { Link as RouterLink } from "react-router-dom";
 
 // -----------------------------------------------------------------------------
@@ -10,7 +8,7 @@ import { Link as RouterLink } from "react-router-dom";
 export interface NavigationCardProps {
   title: string;
   desc: string;
-  icon: React.ReactElement<SvgIconComponent>;
+  image: string;
   path: string;
 }
 
@@ -21,7 +19,7 @@ export interface NavigationCardProps {
 export const NavigationCard = ({
   title,
   desc,
-  icon,
+  image,
   path,
 }: NavigationCardProps) => {
 
@@ -45,20 +43,10 @@ export const NavigationCard = ({
       }}
     >
       <CardMedia
-        component="div"
-        sx={{
-          height: 120,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          bgcolor: "primary.main",
-          color: "primary.contrastText",
-        }}
-      >
-        {React.cloneElement(icon, {
-          sx: { fontSize: 72 },
-        })}
-      </CardMedia>
+        sx={{ height: 210 }}
+        image={image}
+        title={title}
+      />
 
       <CardContent>
         <Typography variant="h5" gutterBottom>
