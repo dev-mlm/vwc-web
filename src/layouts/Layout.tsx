@@ -1,4 +1,4 @@
-import { Box, Container } from '@mui/material';
+import { Box } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import { NavBar } from '../components/organisms/NavBar/NavBar';
 import { Footer } from '../components/organisms/Footer/Footer';
@@ -21,9 +21,7 @@ export const MainLayout = () => {
 
       {/* Page Content */}
       <Box component="main" sx={{ flexGrow: 1 }}>
-        <Container maxWidth="lg">
-          <Outlet />
-        </Container>
+        <Outlet />
       </Box>
 
       {/* Footer */}
