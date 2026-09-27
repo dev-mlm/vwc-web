@@ -1,14 +1,12 @@
+import { useState } from "react";
 import { Grid } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { ResponsiveContainer } from "../atoms/ResponsiveContainer";
 import { NavigationCard, type NavigationCardProps } from "../atoms/NavigationCard";
 import Staff from "../../assets/nav-cards/Staff.png";
 import Services from "../../assets/nav-cards/Services.png";
 import NewPatientSpecial from "../../assets/nav-cards/New-Patient-Special.png";
-
-// -----------------------------------------------------------------------------
-//  Types
-// -----------------------------------------------------------------------------
+import { useNavigate } from "react-router-dom";
+import { ContactDialog } from "./ContactDialog";
 
 // -----------------------------------------------------------------------------
 //  HERO Cards
@@ -16,25 +14,35 @@ import NewPatientSpecial from "../../assets/nav-cards/New-Patient-Special.png";
 
 export const HeroCards = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  // ---------------------------------------------
+  //  Event Handlers
+  // ---------------------------------------------
+
+  const toggleDialog = () => {
+    setIsDialogOpen((prev) => !prev);
+  };
 
   const navCardData: NavigationCardProps[] = [
     {
       title: t('home.section_hero.staffCard.title'),
       desc: t('home.section_hero.staffCard.desc'),
-      path: "/staff",
+      action: () => navigate('/staff'),
       image: Staff,
-    },
-    {
-      title: t('home.section_hero.servicesCard.title'),
-      desc: t('home.section_hero.servicesCard.desc'),
-      path: "/services",
-      image: Services,
     },
     {
       title: t('home.section_hero.saleCard.title'),
       desc: t('home.section_hero.saleCard.desc'),
-      path: "/services",
+      action: toggleDialog,
       image: NewPatientSpecial,
+    },
+    {
+      title: t('home.section_hero.servicesCard.title'),
+      desc: t('home.section_hero.servicesCard.desc'),
+      action: () => navigate('/services'),
+      image: Services,
     },
   ]
 
@@ -43,10 +51,11 @@ export const HeroCards = () => {
   // ---------------------------------------------
 
   return (
-    <ResponsiveContainer>
+    <>
       <Grid
         container
-        spacing={4}
+        rowSpacing={3}
+        columnSpacing={3}
         sx={{ alignItems: 'center' }}
       >
         {navCardData.map((card) => (
@@ -54,12 +63,18 @@ export const HeroCards = () => {
             <NavigationCard
               title={card.title}
               desc={card.desc}
-              path={card.path}
+              action={card.action}
               image={card.image}
             />
           </Grid>
         ))}
       </Grid>
-    </ResponsiveContainer>
+
+      <ContactDialog
+        open={isDialogOpen}
+        onClose={toggleDialog}
+        variant="newPatientSpec"
+      />
+    </>
   );
 };

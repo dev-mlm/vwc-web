@@ -1,5 +1,12 @@
-import { Card, CardMedia, CardContent, Typography } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Typography,
+  Button,
+} from "@mui/material";
+import { useTranslation } from 'react-i18next';
 
 // -----------------------------------------------------------------------------
 //  Types
@@ -9,7 +16,7 @@ export interface NavigationCardProps {
   title: string;
   desc: string;
   image: string;
-  path: string;
+  action: () => void;
 }
 
 // -----------------------------------------------------------------------------
@@ -20,8 +27,9 @@ export const NavigationCard = ({
   title,
   desc,
   image,
-  path,
+  action,
 }: NavigationCardProps) => {
+  const { t } = useTranslation();
 
   // ---------------------------------------------
   //  JSX
@@ -29,34 +37,53 @@ export const NavigationCard = ({
 
   return (
     <Card
-      component={RouterLink}
-      to={path}
       sx={{
-        textDecoration: "none",
-        cursor: "pointer",
-        transition: "transform 0.2s, box-shadow 0.2s",
-
-        "&:hover": {
-          transform: "translateY(-4px)",
-          boxShadow: 4,
-        },
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
+      {/* Image */}
       <CardMedia
         sx={{ height: 210 }}
         image={image}
         title={title}
       />
 
+      {/* Content */}
       <CardContent>
-        <Typography variant="h5" gutterBottom>
+        <Typography
+          variant="h4"
+          gutterBottom
+          align="center"
+        >
           {title}
         </Typography>
 
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          align="center"
+        >
           {desc}
         </Typography>
       </CardContent>
+
+      {/* Learn More */}
+      <CardActions
+        sx={{
+          mt: 'auto',
+          justifyContent: 'flex-end',
+        }}
+      >
+        <Button
+          onClick={action}
+          size='small'
+          variant='outlined'
+        >
+          {t('common.learnMore')}
+        </Button>
+      </CardActions>
     </Card>
   );
 };
