@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ContactDialog } from '../../molecules/ContactDialog';
+import { ContactDialog, type ContactDialogVariant } from '../../molecules/ContactDialog';
 import { DesktopNavBar } from './DesktopNavBar';
 import { MobileNavBar } from './MobileNavBar';
 import { useScreensize } from '../../../hooks/useScreensize';
@@ -10,26 +9,27 @@ import { useScreensize } from '../../../hooks/useScreensize';
 // -----------------------------------------------------------------------------
 
 export const NavBar = () => {
-  const { i18n } = useTranslation();
   const {
     isDesktop,
     isTablet,
     isMobile,
   } = useScreensize();
 
+  const [variant, setVariant] = useState<ContactDialogVariant>('consultation');
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   // ---------------------------------------------
   //  Event Handlers
   // ---------------------------------------------
 
-  const toggleDialog = () => {
+  const toggleDialog = (variant: ContactDialogVariant) => {
+    setVariant(variant);
     setIsDialogOpen((prev) => !prev);
   };
 
-  const toggleLanguage = () => {
-    const nextLang = i18n.language.startsWith('es') ? 'en' : 'es';
-    i18n.changeLanguage(nextLang);
+  const closeDialog = () => {
+    setVariant('consultation');
+    setIsDialogOpen(false);
   };
 
   // ---------------------------------------------
@@ -49,14 +49,13 @@ export const NavBar = () => {
       {(isTablet || isMobile) && (
         <MobileNavBar
           toggleDialog={toggleDialog}
-          toggleLanguage={toggleLanguage}
         />
       )}
 
       <ContactDialog
         open={isDialogOpen}
-        onClose={toggleDialog}
-        variant="consultation"
+        onClose={closeDialog}
+        variant={variant}
       />
     </>
   );

@@ -11,13 +11,14 @@ import { styled } from '@mui/material/styles';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { LanguageToggle } from '../../molecules/LanguageBtn';
+import type { ContactDialogVariant } from '../../molecules/ContactDialog';
 
 // -----------------------------------------------------------------------------
 //  Types
 // -----------------------------------------------------------------------------
 
 interface DesktopNavBarProps {
-  toggleDialog: () => void;
+  toggleDialog: (variant: ContactDialogVariant) => void;
 }
 
 interface NavItem {
@@ -170,7 +171,7 @@ export const DesktopNavBar = ({
               <Button
                 color="secondary"
                 variant="contained"
-                onClick={toggleDialog}
+                onClick={() => toggleDialog('consultation')}
                 sx={{ ml: 2 }}
               >
                 <Typography sx={{ textTransform: 'uppercase' }}>

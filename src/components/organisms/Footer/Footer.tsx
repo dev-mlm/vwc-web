@@ -1,5 +1,5 @@
 import { Typography, Box, Container, Stack } from '@mui/material';
-import { SocialLinks } from './SocialLinks';
+import { SocialLinks } from '../../molecules/SocialLinks';
 import { useScreensize } from '../../../hooks/useScreensize';
 import { useEffect, useState } from 'react';
 

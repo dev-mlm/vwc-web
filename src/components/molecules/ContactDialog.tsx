@@ -24,10 +24,12 @@ import { ResponsiveTextField } from "../atoms/ResponsiveTextField"
 //  Types
 // -----------------------------------------------------------------------------
 
+export type ContactDialogVariant = 'consultation' | 'newPatientSpec';
+
 interface ContactDialogProps {
   open: boolean;
   onClose: () => void;
-  variant: 'consultation' | 'newPatientSpec';
+  variant: ContactDialogVariant;
 }
 
 interface ContactForm {

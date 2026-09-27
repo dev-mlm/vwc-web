@@ -129,6 +129,21 @@ const theme = createTheme({
         },
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          transition: 'transform 150ms ease, background-color 200ms ease',
+          boxShadow: 'none',
+          '&:hover': {
+            transform: 'translateY(-2px)',
+            boxShadow: 'none',
+          },
+          '&:active': {
+            transform: 'translateY(0)',
+          },
+        },
+      },
+    },
     MuiCardHeader: {
       styleOverrides: {
         root: {

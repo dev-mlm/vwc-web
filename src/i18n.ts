@@ -11,6 +11,8 @@ const resources = {
         staff: 'Staff',
         services: 'Services',
         consultation: 'Consultation',
+        bookConsultation: 'Book a Consultation',
+        newPatientSpec: 'New Patient Special',
         langToggle: 'Español',
       },
       common: {
@@ -200,6 +202,8 @@ const resources = {
         services: 'Servicios',
         langToggle: 'English',
         consultation: 'Consulta',
+        bookConsultation: 'Reserva una consulta',
+        newPatientSpec: 'Oferta especial para pacientes nuevos',
       },
       common: {
         send: 'Enviar',

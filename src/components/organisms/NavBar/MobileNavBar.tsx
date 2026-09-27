@@ -6,39 +6,97 @@ import {
   Typography,
   IconButton,
   Box,
-  Drawer,
   List,
   ListItem,
-  ListItemText,
   ListItemButton,
-  ListItemIcon,
+  ListItemText,
   Divider,
+  Button,
+  Collapse,
 } from '@mui/material';
-import {
-  Menu,
-  HomeRounded,
-  PersonRounded,
-  SpaRounded,
-  SellRounded,
-  LanguageRounded,
-  type SvgIconComponent
-} from '@mui/icons-material';
+import { Menu, Close } from '@mui/icons-material';
+import { styled } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
+import { LanguageToggle } from '../../molecules/LanguageBtn';
+import { SocialLinks } from '../../molecules/SocialLinks';
+import { type ContactDialogVariant } from '../../molecules/ContactDialog';
+import { colors } from '../../../theme';
 
 // -----------------------------------------------------------------------------
 //  Types
 // -----------------------------------------------------------------------------
 
 interface NavItem {
-  name: string;
-  link: string;
-  icon: SvgIconComponent;
+  title: string;
+  path: string;
 }
 
 interface MobileNavBarProps {
-  toggleDialog: () => void;
-  toggleLanguage: () => void;
+  toggleDialog: (variant: ContactDialogVariant) => void;
 }
+
+// -----------------------------------------------------------------------------
+//  Constants
+// -----------------------------------------------------------------------------
+
+const HOME_PATH = '/';
+const STAFF_PATH = '/staff';
+const SERVICES_PATH = '/services';
+
+// -----------------------------------------------------------------------------
+//  Styled Components
+// -----------------------------------------------------------------------------
+
+const SpacedTypography = styled(Typography)({
+  letterSpacing: '0.1em',
+  textTransform: 'uppercase',
+});
+
+const DrawerNavItem = styled(ListItemButton)(({ theme }) => ({
+  position: 'relative',
+  minHeight: 56,
+  padding: '0 4px',
+
+  color: theme.palette.text.primary,
+
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    left: 0,
+    bottom: 0,
+    width: '100%',
+    height: '2px',
+    backgroundColor: theme.palette.secondary.main,
+
+    transform: 'scaleX(0)',
+    transformOrigin: 'left',
+    transition: 'transform 300ms ease',
+  },
+
+  '&:hover': {
+    backgroundColor: 'transparent',
+  },
+
+  '&:hover::after': {
+    transform: 'scaleX(1)',
+  },
+
+  // Keep the underline expanded for the active page
+  '&.active::after': {
+    transform: 'scaleX(1)',
+  },
+}));
+
+const DrawerNavText = styled(ListItemText)({
+  margin: 0,
+
+  '& .MuiTypography-root': {
+    fontSize: '1.2rem',
+    fontWeight: 500,
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase',
+  },
+});
 
 // -----------------------------------------------------------------------------
 //  Mobile NavBar
@@ -46,28 +104,24 @@ interface MobileNavBarProps {
 
 export const MobileNavBar = ({
   toggleDialog,
-  toggleLanguage,
 }: MobileNavBarProps) => {
   const { t } = useTranslation();
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
 
   const navItems: NavItem[] = [
     {
-      name: t('nav.home'),
-      link: "/",
-      icon: HomeRounded,
+      title: t('nav.home'),
+      path: HOME_PATH,
     },
     {
-      name: t('nav.staff'),
-      link: "/staff",
-      icon: PersonRounded,
+      title: t('nav.staff'),
+      path: STAFF_PATH,
     },
     {
-      name: t('nav.services'),
-      link: "/services",
-      icon: SpaRounded,
+      title: t('nav.services'),
+      path: SERVICES_PATH,
     },
-  ]
+  ];
 
   // ---------------------------------------------
   //  Event Handlers
@@ -77,71 +131,29 @@ export const MobileNavBar = ({
     setIsMobileDrawerOpen((prev) => !prev);
   };
 
-  const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleMobileDrawer}>
-      <List>
-        {navItems.map((navItem) => (
-          <ListItem key={navItem.name}>
-            <ListItemButton component={NavLink} to={navItem.link}>
-              <ListItemIcon>
-                <navItem.icon />
-              </ListItemIcon>
-              <ListItemText>
-                {navItem.name}
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-
-      <Divider />
-
-      <List>
-        <ListItem key="consultation-btn">
-          <ListItemButton
-            onClick={toggleDialog}
-          >
-            <ListItemIcon>
-              <SellRounded />
-            </ListItemIcon>
-            <ListItemText>
-              {t('nav.consultation')}
-            </ListItemText>
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem key="language-toggle-btn">
-          <ListItemButton
-            onClick={toggleLanguage}
-          >
-            <ListItemIcon>
-              <LanguageRounded />
-            </ListItemIcon>
-            <ListItemText>
-              {t('nav.langToggle')}
-            </ListItemText>
-          </ListItemButton>
-        </ListItem>
-      </List>
-    </Box>
-  );
+  const closeMobileDrawer = () => {
+    setIsMobileDrawerOpen(false);
+  };
 
   // ---------------------------------------------
   //  JSX
   // ---------------------------------------------
 
   return (
-    <>
+    <Box
+      sx={{
+        position: 'sticky',
+        top: 0,
+        zIndex: (theme) => theme.zIndex.appBar,
+      }}
+    >
       <AppBar position="static">
         <Toolbar>
-
-          {/* Logo */}
           <Typography
             variant="h5"
             sx={{
               flexGrow: 1,
-              justifySelf: 'start',
-              textTransform: "uppercase",
+              textTransform: 'uppercase',
               letterSpacing: '0.2em',
               fontFamily: '"Cormorant Garamond", serif',
             }}
@@ -152,21 +164,125 @@ export const MobileNavBar = ({
           <IconButton
             onClick={toggleMobileDrawer}
             sx={(theme) => ({
-              color: theme.palette.background.paper
+              color: theme.palette.background.paper,
             })}
+            aria-label={isMobileDrawerOpen ? 'Close menu' : 'Open menu'}
           >
-            <Menu fontSize='large' />
+            {isMobileDrawerOpen ? (
+              <Close fontSize="large" />
+            ) : (
+              <Menu fontSize="large" />
+            )}
           </IconButton>
         </Toolbar>
       </AppBar>
 
-      <Drawer
-        open={isMobileDrawerOpen}
-        onClose={toggleMobileDrawer}
-        anchor="right"
+      {/* Dropdown container */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '100%',
+          left: 0,
+          width: '100%',
+        }}
       >
-        {DrawerList}
-      </Drawer>
-    </>
+        <Collapse in={isMobileDrawerOpen}>
+          <Box
+            sx={(theme) => ({
+              width: '100%',
+              backgroundColor: theme.palette.background.default,
+              borderBottom: `1px solid ${theme.palette.divider}`,
+              boxShadow: theme.shadows[4],
+              px: 3,
+              py: 3,
+            })}
+          >
+            <List
+              disablePadding
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 0.5,
+              }}
+            >
+              {navItems.map((item) => (
+                <ListItem key={item.path} disablePadding>
+                  <DrawerNavItem
+                    component={NavLink}
+                    to={item.path}
+                    end
+                    onClick={closeMobileDrawer}
+                    className={({ isActive }) =>
+                      isActive ? 'active' : undefined
+                    }
+                  >
+                    <DrawerNavText>
+                      {item.title}
+                    </DrawerNavText>
+                  </DrawerNavItem>
+                </ListItem>
+              ))}
+            </List>
+
+            <Divider sx={{ my: 3 }} />
+
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 1.5,
+              }}
+            >
+              {/* Book a Consultation */}
+              <Button
+                variant="contained"
+                fullWidth
+                onClick={() => {
+                  toggleDialog('consultation');
+                  closeMobileDrawer();
+                }}
+                sx={{
+                  minHeight: 48,
+                  color: colors.neutral[900],
+                  backgroundColor: colors.neutral[300],
+                }}
+              >
+                <SpacedTypography>
+                  {t('nav.bookConsultation')}
+                </SpacedTypography>
+              </Button>
+
+              {/* New Patient Special */}
+              <Button
+                color="secondary"
+                variant="contained"
+                fullWidth
+                onClick={() => {
+                  toggleDialog('newPatientSpec');
+                  closeMobileDrawer();
+                }}
+                sx={{ minHeight: 48 }}
+              >
+                <SpacedTypography>
+                  {t('nav.newPatientSpec')}
+                </SpacedTypography>
+              </Button>
+            </Box>
+
+            <Divider sx={{ my: 3 }} />
+
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+            >
+              <LanguageToggle />
+              <SocialLinks />
+            </Box>
+          </Box>
+        </Collapse>
+      </Box>
+    </Box>
   );
 };
