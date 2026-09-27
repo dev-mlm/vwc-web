@@ -4,9 +4,13 @@ import {
   Typography,
   Container,
   Button,
+  Box,
+  Tooltip,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { styled } from '@mui/material/styles';
+import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { LanguageToggle } from '../../molecules/LanguageBtn';
 
 // -----------------------------------------------------------------------------
 //  Types
@@ -15,6 +19,58 @@ import { useTranslation } from 'react-i18next';
 interface DesktopNavBarProps {
   toggleDialog: () => void;
 }
+
+interface NavItem {
+  title: string;
+  path: string;
+}
+
+// -----------------------------------------------------------------------------
+//  Constants
+// -----------------------------------------------------------------------------
+
+const HOME_PATH = "/";
+const STAFF_PATH = "/staff";
+const SERVICES_PATH = "/services";
+
+// -----------------------------------------------------------------------------
+//  Styled Components
+// -----------------------------------------------------------------------------
+
+const SpacedTypography = styled(Typography)({
+  letterSpacing: '0.1em',
+  textTransform: 'uppercase',
+});
+
+const NavButtonWrapper = styled('div')(({ theme }) => ({
+  position: 'relative',
+  marginLeft: '6px',
+  marginRight: '6px',
+
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    left: 0,
+    bottom: 0,
+    width: '100%',
+    height: '2px',
+    backgroundColor: theme.palette.secondary.main,
+
+    transform: 'scaleX(0)',
+    transformOrigin: 'left',
+    transition: 'transform 300ms ease',
+  },
+
+  // Expand underline on hover
+  '&:hover::after': {
+    transform: 'scaleX(1)',
+  },
+
+  // Keep underline expanded when active
+  '&:has(.active)::after': {
+    transform: 'scaleX(1)',
+  },
+}));
 
 // -----------------------------------------------------------------------------
 //  Desktop NavBar
@@ -25,6 +81,21 @@ export const DesktopNavBar = ({
 }: DesktopNavBarProps) => {
   const { t } = useTranslation();
 
+  const navItems: NavItem[] = [
+    {
+      title: t('nav.home'),
+      path: HOME_PATH,
+    },
+    {
+      title: t('nav.staff'),
+      path: STAFF_PATH,
+    },
+    {
+      title: t('nav.services'),
+      path: SERVICES_PATH,
+    },
+  ];
+
   // ---------------------------------------------
   //  JSX
   // ---------------------------------------------
@@ -32,59 +103,83 @@ export const DesktopNavBar = ({
   return (
     <AppBar position="static">
       <Container maxWidth="lg">
-        <Toolbar>
+        <Toolbar
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: '1fr auto 1fr',
+            height: 50,
+          }}
+        >
+          {/* Logo */}
           <Typography
-            variant="h5"
-            align="left"
+            variant="h4"
             sx={{
-              flexGrow: 1,
+              justifySelf: 'start',
               textTransform: "uppercase",
+              letterSpacing: '0.2em',
               fontFamily: '"Cormorant Garamond", serif',
             }}
           >
-            Vida Wellness
+            {t('nav.vida')}
           </Typography>
 
           {/* Page Buttons */}
-          <Button
-            color="inherit"
-            component={Link}
-            to="/"
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignSelf: 'stretch',
+              alignItems: 'center',
+            }}
           >
-            <Typography sx={{ textTransform: 'uppercase' }}>
-              {t('nav.home')}
-            </Typography>
-          </Button>
-          <Button
-            color="inherit"
-            component={Link}
-            to="/staff"
-          >
-            <Typography sx={{ textTransform: 'uppercase' }}>
-              {t('nav.staff')}
-            </Typography>
-          </Button>
-          <Button
-            color="inherit"
-            component={Link}
-            to="/services"
-          >
-            <Typography sx={{ textTransform: 'uppercase' }}>
-              {t('nav.services')}
-            </Typography>
-          </Button>
+            {navItems.map((item) => (
+              <NavButtonWrapper>
+                <Button
+                  color='inherit'
+                  component={NavLink}
+                  to={item.path}
+                  end
+                  className={({ isActive }) =>
+                    isActive ? 'active' : undefined
+                  }
+                >
+                  <SpacedTypography
+                    className='nav-label'
+                  >
+                    {item.title}
+                  </SpacedTypography>
+                </Button>
+              </NavButtonWrapper>
+            ))}
+          </Box>
 
           {/* Consultation Button */}
-          <Button
-            color="secondary"
-            variant="contained"
-            onClick={toggleDialog}
-            sx={{ ml: 2 }}
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'end',
+              alignSelf: 'stretch',
+              alignItems: 'center',
+            }}
           >
-            <Typography sx={{ textTransform: 'uppercase' }}>
-              {t('nav.consultation')}
-            </Typography>
-          </Button>
+            <LanguageToggle />
+
+            <Tooltip
+              title={t('consultation.tooltip')}
+            >
+              <Button
+                color="secondary"
+                variant="contained"
+                onClick={toggleDialog}
+                sx={{ ml: 2 }}
+              >
+                <Typography sx={{ textTransform: 'uppercase' }}>
+                  {t('nav.consultation')}
+                </Typography>
+              </Button>
+            </Tooltip>
+          </Box>
+
         </Toolbar>
       </Container>
     </AppBar >

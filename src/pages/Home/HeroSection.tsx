@@ -85,9 +85,12 @@ export const HeroSection = () => {
                 color="secondary"
                 variant="contained"
                 onClick={toggleDialog}
-                sx={{ width: 'fit-content' }}
+                sx={{
+                  width: 'fit-content',
+                  textTransform: 'uppercase',
+                }}
               >
-                {t('nav.consultation')}
+                {t('home.section_hero.consultation')}
               </Button>
 
               {/* Language Button */}

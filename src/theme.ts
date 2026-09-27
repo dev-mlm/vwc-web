@@ -107,6 +107,28 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiTooltip: {
+      defaultProps: {
+        arrow: true,
+      },
+      styleOverrides: {
+        tooltip: {
+          backgroundColor: colors.secondary[50],
+          color: colors.primary[900],
+          border: `1px solid ${colors.secondary[200]}`,
+          fontFamily: '"DM Sans", sans-serif',
+          fontSize: '0.8rem',
+          fontWeight: 400,
+          lineHeight: 1.4,
+          padding: '6px 10px',
+          borderRadius: '4px',
+          boxShadow: '0 2px 8px rgba(48, 56, 37, 0.12)',
+        },
+        arrow: {
+          color: colors.secondary[50],
+        },
+      },
+    },
     MuiCardHeader: {
       styleOverrides: {
         root: {

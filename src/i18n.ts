@@ -6,10 +6,11 @@ const resources = {
   en: {
     translation: {
       nav: {
+        vida: 'Vida',
         home: 'Home',
         staff: 'Staff',
         services: 'Services',
-        consultation: 'Book a Consultation',
+        consultation: 'Consultation',
         langToggle: 'Español',
       },
       common: {
@@ -17,6 +18,9 @@ const resources = {
         sending: 'Sending...',
         cancel: 'Cancel',
         learnMore: 'Learn More',
+      },
+      langToggle: {
+        tooltip: 'Click to toggle language',
       },
       consultation: {
         title: 'Book a Consultation',
@@ -39,6 +43,7 @@ const resources = {
         message: 'Reason for Visit',
         messagePh: 'Provide a brief description of what is going on.',
         messageReq: 'Reason for visit is required',
+        tooltip: 'Book a Consultation',
       },
       businessHours: {
         title: 'Hours of Operation',
@@ -65,6 +70,7 @@ const resources = {
           title: "Your Journey to Health Begins Here",
           subtitle: "Fort Collins Chiropractic & Wellness",
           desc: "Helping patients of every age to grow stronger, healthier lives through spinal alignment, movement, and rehabilitative therapies that support the body’s natural ability to heal",
+          consultation: "Book a Consultation",
           staffCard: {
             title: 'Staff',
             desc: 'Learn more about our chiropractors!',
@@ -188,17 +194,21 @@ const resources = {
   es: {
     translation: {
       nav: {
+        vida: 'Vida',
         home: 'Inicio',
         staff: 'Personal',
         services: 'Servicios',
         langToggle: 'English',
-        consultation: 'Reserva Una Consulta',
+        consultation: 'Consulta',
       },
       common: {
         send: 'Enviar',
         sending: 'Envío...',
         cancel: 'Cancelar',
         learnMore: 'Más información',
+      },
+      langToggle: {
+        tooltip: 'Haz clic para cambiar el idioma',
       },
       consultation: {
         title: 'Reserva una consulta',
@@ -221,6 +231,7 @@ const resources = {
         message: 'Motivo de la visita',
         messagePh: 'Proporcione una breve descripción de lo que está sucediendo.',
         messageReq: 'El motivo de la visita es obligatorio',
+        tooltip: 'Reserva una consulta',
       },
       businessHours: {
         title: 'Horario de atención',
@@ -249,6 +260,7 @@ const resources = {
           title: "Tu camino hacia la salud comienza aquí.",
           subtitle: "Quiropráctica y Bienestar en Fort Collins",
           desc: "Ayudamos a pacientes de todas las edades a vivir vidas más fuertes y sanas mediante alineación espinal, movimiento y terapias de rehabilitación que apoyan la sanación natural del cuerpo!",
+          consultation: "Reserva una consulta",
           staffCard: {
             title: 'Personal',
             desc: '¡Conozca más sobre nuestros quiroprácticos!',
