@@ -24,12 +24,13 @@ import { ResponsiveTextField } from "../atoms/ResponsiveTextField"
 //  Types
 // -----------------------------------------------------------------------------
 
-interface ConsultationDialogProps {
+interface ContactDialogProps {
   open: boolean;
   onClose: () => void;
+  variant: 'consultation' | 'newPatientSpec';
 }
 
-interface CosultationForm {
+interface ContactForm {
   firstName: string;
   lastName: string;
   email: string;
@@ -41,7 +42,7 @@ interface CosultationForm {
 //  Constants
 // -----------------------------------------------------------------------------
 
-const DEFAULT_FORM_VALUES: CosultationForm = {
+const DEFAULT_FORM_VALUES: ContactForm = {
   firstName: "",
   lastName: "",
   email: "",
@@ -50,20 +51,21 @@ const DEFAULT_FORM_VALUES: CosultationForm = {
 };
 
 // -----------------------------------------------------------------------------
-//  Consultation Dialog
+//  Contact Dialog
 // -----------------------------------------------------------------------------
 
-export const ConsultationDialog = ({
+export const ContactDialog = ({
   open,
   onClose,
-}: ConsultationDialogProps) => {
+  variant,
+}: ContactDialogProps) => {
   const { t } = useTranslation();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Form
-  const formMethods = useForm<CosultationForm>({
+  const formMethods = useForm<ContactForm>({
     defaultValues: DEFAULT_FORM_VALUES
   });
   const {
@@ -84,7 +86,7 @@ export const ConsultationDialog = ({
     onClose();
   };
 
-  const onSubmit: SubmitHandler<CosultationForm> = async (data) => {
+  const onSubmit: SubmitHandler<ContactForm> = async (data) => {
     setIsSubmitting(true);
     setSubmitError(null);
 
@@ -98,7 +100,9 @@ export const ConsultationDialog = ({
     try {
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        variant === 'consultation'
+          ? import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+          : import.meta.env.VITE_EMAILJS_NPS_TEMPLATE_ID,
         templateParams,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
@@ -127,7 +131,10 @@ export const ConsultationDialog = ({
       maxWidth="md"
     >
       <DialogTitle sx={{ position: "relative", pr: 6 }}>
-        {t('consultation.title')}
+        {variant === 'consultation'
+          ? t('consultation.title')
+          : t('consultation.npsTitle')
+        }
 
         <IconButton
           aria-label="close"
@@ -146,7 +153,10 @@ export const ConsultationDialog = ({
         <DialogContent>
           <Stack spacing={2}>
             <DialogContentText>
-              {t('consultation.caption')}
+              {variant === 'consultation'
+                ? t('consultation.caption')
+                : t('consultation.npsCaption')
+              }
             </DialogContentText>
 
             {/* Display error message if EmailJS dispatch fails */}

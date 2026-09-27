@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ConsultationDialog } from '../../molecules/ConsultationDialog';
+import { ContactDialog } from '../../molecules/ContactDialog';
 import { DesktopNavBar } from './DesktopNavBar';
 import { MobileNavBar } from './MobileNavBar';
 import { useScreensize } from '../../../hooks/useScreensize';
@@ -53,7 +53,11 @@ export const NavBar = () => {
         />
       )}
 
-      <ConsultationDialog open={isDialogOpen} onClose={toggleDialog} />
+      <ContactDialog
+        open={isDialogOpen}
+        onClose={toggleDialog}
+        variant="consultation"
+      />
     </>
   );
 };

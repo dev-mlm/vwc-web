@@ -20,7 +20,9 @@ const resources = {
       },
       consultation: {
         title: 'Book a Consultation',
+        npsTitle: '$30 - New Patient Special!',
         caption: 'Fill out the form and we will reach out to you as soon as possible.',
+        npsCaption: 'Fill out the form to claim the online $30 special, and we will contact you as soon as possible.',
         firstName: 'First Name',
         firstNamePh: 'John',
         firstNameReq: 'First name is required',
@@ -200,7 +202,9 @@ const resources = {
       },
       consultation: {
         title: 'Reserva una consulta',
+        npsTitle: '$30 – ¡Oferta especial para pacientes nuevos!',
         caption: 'Complete el formulario y nos pondremos en contacto con usted lo antes posible.',
+        npsCaption: 'Complete el formulario para solicitar la oferta especial en línea de 30 $ y nos pondremos en contacto con usted lo antes posible.',
         firstName: 'Nombre de pila',
         firstNamePh: 'John',
         firstNameReq: 'El nombre es obligatorio',

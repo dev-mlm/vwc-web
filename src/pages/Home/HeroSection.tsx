@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Container, Stack, Button, Typography, Box } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { ConsultationDialog } from "../../components/molecules/ConsultationDialog";
+import { ContactDialog } from "../../components/molecules/ContactDialog";
 import { HeroCards } from "../../components/molecules/HeroCards";
 import { useScreensize } from "../../hooks/useScreensize";
 import largeLogo from "../../assets/logo/logo-square.png";
@@ -99,7 +99,11 @@ export const HeroSection = () => {
         </Stack >
       </Container>
 
-      <ConsultationDialog open={isDialogOpen} onClose={toggleDialog} />
+      <ContactDialog
+        open={isDialogOpen}
+        onClose={toggleDialog}
+        variant="consultation"
+      />
     </>
   );
 };
