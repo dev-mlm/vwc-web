@@ -1,75 +1,54 @@
-# React + TypeScript + Vite
+## Vida Wellness Center
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive website for Vida Wellness Center, a chiropractic clinic focused on helping patients improve their health, mobility, and overall well-being.
 
-Currently, two official plugins are available:
+The website is built with React, TypeScript, Vite, and Material UI (MUI), with an emphasis on responsive design, accessibility, and a clean wellness-focused user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+<img width="400" height="300" alt="Logo-N-Text" src="https://github.com/user-attachments/assets/ce3d7c19-7a3d-4cbc-93da-fcc4a90045d7" />
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Tech Stack
+> * React — UI library
+> * TypeScript — Type-safe JavaScript
+> * Vite — Development server and build tool
+> * Material UI (MUI) — Component library and styling system
+> * React Router — Client-side routing
+> * i18next / react-i18next — Internationalization
+> * Google Reviews — Patient review integration
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Features
+> * Responsive design for desktop, tablet, and mobile devices
+> * Modern chiropractic and wellness-focused UI
+> * Reusable React components
+> * Material UI theme customization
+> * Patient testimonials and Google reviews
+> * Services and treatment information
+> * New patient information and special offers
+> * Staff information
+> * Responsive navigation and mobile menu
+> * Client-side page navigation
+> * Internationalization support
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Home Page
+> <img width="1872" height="2797" alt="Home Page" src="https://github.com/user-attachments/assets/ed105a22-36ff-4e9b-9b8f-56630f46936b" />
+>
+> #### Home Page - New Patient Special Dialog
+> <img width="931" height="581" alt="New Patient Special Dialog" src="https://github.com/user-attachments/assets/d345743c-8138-4c55-8507-de4052258932" />
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
 
-```
+> ### Staff Page
+> <img width="1870" height="2083" alt="Staff Page" src="https://github.com/user-attachments/assets/61ed4b8d-38db-49f8-b914-5042d06bdbf6" />
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+> ### Services Page
+> <img width="1871" height="1779" alt="Services Page" src="https://github.com/user-attachments/assets/ae53c67e-0994-4899-bd40-d16f5b0bc978" />
+>
+> #### Services Page - Service Info Dialog
+> <img width="930" height="673" alt="Service Info Dialog" src="https://github.com/user-attachments/assets/5ac37c9b-9c8b-4de4-84c6-74987bdfea43" />
