@@ -81,8 +81,8 @@ const DrawerNavItem = styled(ListItemButton)(({ theme }) => ({
     transform: 'scaleX(1)',
   },
 
-  // Keep the underline expanded for the active page
-  '&.active::after': {
+  // Keep underline expanded when the parent NavLink is active
+  'a.active &::after': {
     transform: 'scaleX(1)',
   },
 }));
@@ -207,19 +207,23 @@ export const MobileNavBar = ({
             >
               {navItems.map((item) => (
                 <ListItem key={item.path} disablePadding>
-                  <DrawerNavItem
-                    component={NavLink}
+                  <NavLink
                     to={item.path}
                     end
                     onClick={closeMobileDrawer}
-                    className={({ isActive }) =>
-                      isActive ? 'active' : undefined
-                    }
+                    className={({ isActive }) => (isActive ? 'active' : undefined)}
+                    style={{
+                      width: '100%',
+                      textDecoration: 'none',
+                      color: 'inherit',
+                    }}
                   >
-                    <DrawerNavText>
-                      {item.title}
-                    </DrawerNavText>
-                  </DrawerNavItem>
+                    <DrawerNavItem>
+                      <DrawerNavText>
+                        {item.title}
+                      </DrawerNavText>
+                    </DrawerNavItem>
+                  </NavLink>
                 </ListItem>
               ))}
             </List>

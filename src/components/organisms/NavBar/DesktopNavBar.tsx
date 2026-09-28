@@ -134,22 +134,22 @@ export const DesktopNavBar = ({
             }}
           >
             {navItems.map((item) => (
-              <NavButtonWrapper>
-                <Button
-                  color='inherit'
-                  component={NavLink}
+              <NavButtonWrapper key={item.path}>
+                <NavLink
                   to={item.path}
                   end
-                  className={({ isActive }) =>
-                    isActive ? 'active' : undefined
-                  }
+                  className={({ isActive }) => (isActive ? 'active' : undefined)}
+                  style={{
+                    textDecoration: 'none',
+                    color: 'inherit',
+                  }}
                 >
-                  <SpacedTypography
-                    className='nav-label'
-                  >
-                    {item.title}
-                  </SpacedTypography>
-                </Button>
+                  <Button color="inherit">
+                    <SpacedTypography className="nav-label">
+                      {item.title}
+                    </SpacedTypography>
+                  </Button>
+                </NavLink>
               </NavButtonWrapper>
             ))}
           </Box>
