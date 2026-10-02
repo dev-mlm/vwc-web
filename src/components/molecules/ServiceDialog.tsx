@@ -9,6 +9,8 @@ import {
   Chip,
   Typography,
   IconButton,
+  Grid,
+  Divider,
 } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import { useTranslation } from 'react-i18next';
@@ -25,6 +27,7 @@ export interface Technique {
 export interface ServiceDialogData {
   title: string;
   desc: string[];
+  image: string;
   techs?: Technique[];
 }
 
@@ -73,7 +76,11 @@ export const ServiceDialog = ({
       fullWidth
       maxWidth="md"
     >
-      <DialogTitle sx={{ position: "relative", pr: 6 }}>
+      <DialogTitle
+        sx={{
+          position: "relative",
+          textAlign: "center",
+        }}>
         {data.title}
 
         <IconButton
@@ -91,24 +98,68 @@ export const ServiceDialog = ({
 
       <DialogContent>
         <Stack spacing={2}>
-          {/* Description */}
-          {data.desc.map((text) => (
-            <DialogContentText>
-              {text}
-            </DialogContentText>
-          ))}
+          <Grid
+            container
+            spacing={3}
+            sx={{ alignItems: "stretch" }}
+          >
+            {/* Image */}
+            <Grid size={{ xs: 12, md: 4 }}>
+              <Box
+                sx={(theme) => ({
+                  height: "100%",
+                  width: "100%",
+                  overflow: "hidden",
+                  border: `4px solid ${theme.palette.primary.main}`,
+                  borderRadius: 2,
+                })}
+              >
+                <Box
+                  component="img"
+                  src={data.image}
+                  alt="Service Image"
+                  sx={{
+                    height: "100%",
+                    width: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    display: "block",
+                  }}
+                />
+              </Box>
+            </Grid>
+
+            {/* Text */}
+            <Grid size={{ xs: 12, md: 8 }}>
+              <Stack spacing={2}>
+                {data.desc.map((text) => (
+                  <DialogContentText key={text}>
+                    {text}
+                  </DialogContentText>
+                ))}
+              </Stack>
+            </Grid>
+          </Grid>
 
           {/* Techniques */}
           {data?.techs && data?.techs.length > 0 && (
             <>
-              <Typography variant="h6">
+              <Divider sx={{ pt: 1 }} />
+
+              <Typography
+                align="center"
+                variant="h6"
+              >
                 {t('services.section_techniques.title')}
               </Typography>
               <Stack
                 direction="row"
-                spacing={2}
+                spacing={1}
                 useFlexGap
-                sx={{ flexWrap: "wrap" }}
+                sx={{
+                  flexWrap: "wrap",
+                  justifyContent: "center",
+                }}
               >
                 {data?.techs.map((tech) => (
                   <Chip

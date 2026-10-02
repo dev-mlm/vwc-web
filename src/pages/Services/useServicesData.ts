@@ -4,6 +4,13 @@ import prenatalCare from '../../assets/services/Prenatal-Care.png';
 import chiroCycle from '../../assets/services/Chiro-Cycle.png';
 import decompression from '../../assets/services/Decompression.png';
 import pediatricCare from '../../assets/services/Pediatric-Care.png';
+import JazminOne from '../../assets/services/Jazmin-1.png';
+import JazminTwo from '../../assets/services/Jazmin-2.png';
+import JazminThree from '../../assets/services/Jazmin-3.png';
+import JazminFour from '../../assets/services/Jazmin-4.png';
+import ZamirOne from '../../assets/services/Zamir-1.png';
+import ZamirTwo from '../../assets/services/Zamir-2.png';
+import Activator from '../../assets/services/Activator.png';
 import { useTranslation } from 'react-i18next';
 import { type ServiceDialogData } from '../../components/molecules/ServiceDialog';
 
@@ -41,6 +48,7 @@ export const useServicesData = () => {
           t('services.section_services.chiro.desc2'),
           t('services.section_services.chiro.desc3'),
         ],
+        image: JazminFour,
         techs: [
           {
             title: t('services.section_techniques.diversified.title'),
@@ -74,6 +82,7 @@ export const useServicesData = () => {
           t('services.section_services.physio.desc2'),
           t('services.section_services.physio.desc3'),
         ],
+        image: ZamirTwo,
       },
     },
     {
@@ -90,14 +99,15 @@ export const useServicesData = () => {
           t('services.section_services.prenatal.desc3'),
           t('services.section_services.prenatal.desc4'),
         ],
+        image: JazminThree,
         techs: [
-          {
-            title: t('services.section_techniques.webster.title'),
-            desc: t('services.section_techniques.webster.desc'),
-          },
           {
             title: t('services.section_techniques.dropTable.title'),
             desc: t('services.section_techniques.dropTable.desc'),
+          },
+          {
+            title: t('services.section_techniques.webster.title'),
+            desc: t('services.section_techniques.webster.desc'),
           },
           {
             title: t('services.section_techniques.activator.title'),
@@ -120,6 +130,7 @@ export const useServicesData = () => {
           t('services.section_services.chiroCycle.desc3'),
           t('services.section_services.chiroCycle.desc4'),
         ],
+        image: JazminOne,
         techs: [
           {
             title: t('services.section_techniques.diversified.title'),
@@ -154,6 +165,7 @@ export const useServicesData = () => {
           t('services.section_services.decomp.desc3'),
           t('services.section_services.decomp.desc4'),
         ],
+        image: ZamirOne,
       },
     },
     {
@@ -170,14 +182,15 @@ export const useServicesData = () => {
           t('services.section_services.pediatric.desc3'),
           t('services.section_services.pediatric.desc4'),
         ],
+        image: Activator,
         techs: [
-          {
-            title: t('services.section_techniques.pediatric.title'),
-            desc: t('services.section_techniques.pediatric.desc'),
-          },
           {
             title: t('services.section_techniques.activator.title'),
             desc: t('services.section_techniques.activator.desc'),
+          },
+          {
+            title: t('services.section_techniques.pediatric.title'),
+            desc: t('services.section_techniques.pediatric.desc'),
           },
           {
             title: t('services.section_techniques.dropTable.title'),
