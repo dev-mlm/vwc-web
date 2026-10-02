@@ -2,6 +2,7 @@ import 'react-google-reviews/dist/index.css';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import theme from './theme';
+import { ScrollToTop } from './components/atoms/ScrollToTop';
 import { MainLayout } from './layouts/Layout';
 import { HomePage } from './pages/Home/HomePage';
 import { StaffPage } from './pages/StaffPage';
@@ -12,6 +13,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<HomePage />} />

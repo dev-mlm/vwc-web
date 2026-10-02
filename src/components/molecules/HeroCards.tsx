@@ -44,7 +44,7 @@ export const HeroCards = () => {
       action: () => navigate('/services'),
       image: Services,
     },
-  ]
+  ];
 
   // ---------------------------------------------
   //  JSX
