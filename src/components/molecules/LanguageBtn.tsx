@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { styled } from '@mui/material/styles';
 import { Button, Box, Tooltip } from '@mui/material';
+import { FlipToBackRounded, FlipToFrontRounded } from '@mui/icons-material';
 
 // -----------------------------------------------------------------------------
 //  Styled Components
@@ -42,10 +43,32 @@ export const LanguageBtn = () => {
 
   return (
     <Button
-      color="primary"
+      size="large"
       variant="outlined"
+      endIcon={
+        isEnglish
+          ? <FlipToFrontRounded />
+          : <FlipToBackRounded />
+      }
       onClick={toggleLanguage}
-      sx={{ width: 'fit-content' }}
+      sx={{
+        minWidth: {
+          xs: "220px",
+          sm: "auto",
+        },
+        px: 4,
+        py: 1.5,
+        color: "#FFFFFF",
+        borderColor:
+          "rgba(255, 255, 255, 0.75)",
+        textTransform: "uppercase",
+        letterSpacing: "0.08em",
+        "&:hover": {
+          borderColor: "#FFFFFF",
+          backgroundColor:
+            "rgba(255, 255, 255, 0.10)",
+        },
+      }}
     >
       {t('nav.langToggle')}
     </Button>
@@ -75,7 +98,9 @@ export const LanguageToggle = () => {
       <LanguageButton
         variant='outlined'
         onClick={toggleLanguage}
+        sx={{ px: 2 }}
       >
+
         <Box component="span" sx={{ fontWeight: isEnglish ? 700 : 300 }}>
           EN
         </Box>
@@ -84,9 +109,16 @@ export const LanguageToggle = () => {
           |
         </Box>
 
-        <Box component="span" sx={{ fontWeight: !isEnglish ? 700 : 300 }}>
+        <Box component="span" sx={{ pr: 0.5, fontWeight: !isEnglish ? 700 : 300 }}>
           ES
         </Box>
+
+        {
+          isEnglish
+            ? <FlipToFrontRounded />
+            : <FlipToBackRounded />
+        }
+
       </LanguageButton>
     </Tooltip>
   );
