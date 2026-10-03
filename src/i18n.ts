@@ -69,10 +69,11 @@ const resources = {
       },
       home: {
         section_hero: {
-          title: "Your Journey to Health Begins Here",
-          subtitle: "Fort Collins Chiropractic & Wellness",
-          desc: "Helping patients of every age to grow stronger, healthier lives through spinal alignment, movement, and rehabilitative therapies that support the body’s natural ability to heal",
+          eyebrow: "Vida Wellness Center",
+          headline: "Chiropractic Care for a Healthier You",
+          subtitle: "Personalized chiropractic care designed to help you move better, feel better, and live well.",
           consultation: "Book a Consultation",
+          services: "Our Services",
           staffCard: {
             title: 'Staff',
             desc: 'Learn more about our chiropractors!',
@@ -261,10 +262,11 @@ const resources = {
         title: 'Bienvenido a Nuestra Aplicación',
         description: 'Su solución integral para servicios de calidad.',
         section_hero: {
-          title: "Tu camino hacia la salud comienza aquí.",
-          subtitle: "Quiropráctica y Bienestar en Fort Collins",
-          desc: "Ayudamos a pacientes de todas las edades a vivir vidas más fuertes y sanas mediante alineación espinal, movimiento y terapias de rehabilitación que apoyan la sanación natural del cuerpo!",
+          eyebrow: "Vida Wellness Center",
+          headline: "Cuidado quiropráctico para una vida más saludable.",
+          subtitle: "Atención quiropráctica personalizada, diseñada para ayudarte a moverte mejor, sentirte mejor y vivir bien.",
           consultation: "Reserva una consulta",
+          services: "Nuestros servicios",
           staffCard: {
             title: 'Personal',
             desc: '¡Conozca más sobre nuestros quiroprácticos!',
