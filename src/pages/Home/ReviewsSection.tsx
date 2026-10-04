@@ -1,6 +1,5 @@
 import { Stack, Typography } from '@mui/material';
 import { ResponsiveContainer } from '../../components/atoms/ResponsiveContainer';
-import { GoogleReviews } from '../../components/molecules/GoogleReviews';
 import { ReviewCarousel } from '../../components/molecules/Reviews/ReviewCarousel';
 import { useReviews } from '../../hooks/useReviews';
 import { useTranslation } from 'react-i18next';
@@ -23,7 +22,7 @@ export const ReviewsSection = () => {
 
   return (
     <ResponsiveContainer>
-      <Stack spacing={2}>
+      <Stack spacing={4}>
         <Typography
           variant="h4"
           gutterBottom
@@ -36,8 +35,6 @@ export const ReviewsSection = () => {
           reviews={data}
           isLoading={isPending}
         />
-
-        <GoogleReviews />
       </Stack>
     </ResponsiveContainer>
   );

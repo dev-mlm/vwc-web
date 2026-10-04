@@ -1,4 +1,3 @@
-import 'react-google-reviews/dist/index.css';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import theme from './theme';
