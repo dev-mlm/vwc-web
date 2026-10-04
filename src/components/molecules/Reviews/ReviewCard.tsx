@@ -93,6 +93,7 @@ export const ReviewCard = ({ review }: ReviewCardProps) => {
         position: 'relative',
         width: '100%',
         maxWidth: 700,
+        height: '100%',
         minHeight: 300,
         p: {
           xs: 3,
@@ -153,6 +154,13 @@ export const ReviewCard = ({ review }: ReviewCardProps) => {
           variant="subtitle1"
           sx={{
             lineHeight: 1.7,
+            overflow: 'hidden',
+            display: '-webkit-box',
+            WebkitBoxOrient: 'vertical',
+            WebkitLineClamp: {
+              xs: 8,
+              sm: 7,
+            }
           }}
         >
           {review.text}

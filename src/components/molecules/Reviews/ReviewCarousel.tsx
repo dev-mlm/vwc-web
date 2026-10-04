@@ -2,12 +2,13 @@ import {
   Box,
   IconButton,
   Stack,
+  Slide,
 } from '@mui/material';
 import {
   ArrowBackIosNewRounded,
   ArrowForwardIosRounded,
 } from '@mui/icons-material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Review } from '../../../api/featurable';
 import { ReviewCard } from './ReviewCard.tsx';
 import { ReviewsSkeleton } from './ReviewsSkeleton.tsx';
@@ -21,6 +22,8 @@ interface ReviewCarouselProps {
   isLoading?: boolean;
 }
 
+type SlideDirection = 'left' | 'right';
+
 // -----------------------------------------------------------------------------
 //  ReviewCarousel
 // -----------------------------------------------------------------------------
@@ -30,6 +33,31 @@ export const ReviewCarousel = ({
   isLoading = false,
 }: ReviewCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [slideDirection, setSlideDirection] =
+    useState<SlideDirection>('left');
+
+  // ---------------------------------------------------------------------------
+  //  Automatically rotate reviews
+  // ---------------------------------------------------------------------------
+
+  useEffect(() => {
+    if (!isAutoPlaying || reviews.length <= 1) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setSlideDirection('left');
+
+      setCurrentIndex((current) =>
+        current === reviews.length - 1 ? 0 : current + 1
+      );
+    }, 3000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isAutoPlaying, reviews.length]);
 
   // Return Skeleton while reviews load
   if (isLoading) {
@@ -42,25 +70,45 @@ export const ReviewCarousel = ({
 
   const review = reviews[currentIndex];
 
-  // ---------------------------------------------
+  // ---------------------------------------------------------------------------
   //  Event Handlers
-  // ---------------------------------------------
+  // ---------------------------------------------------------------------------
 
   const previousReview = () => {
+    setIsAutoPlaying(false);
+    setSlideDirection('right');
+
     setCurrentIndex((current) =>
       current === 0 ? reviews.length - 1 : current - 1
     );
   };
 
   const nextReview = () => {
+    setIsAutoPlaying(false);
+    setSlideDirection('left');
+
     setCurrentIndex((current) =>
       current === reviews.length - 1 ? 0 : current + 1
     );
   };
 
-  // ---------------------------------------------
+  const selectReview = (index: number) => {
+    if (index === currentIndex) {
+      return;
+    }
+
+    setIsAutoPlaying(false);
+
+    setSlideDirection(
+      index > currentIndex ? 'left' : 'right'
+    );
+
+    setCurrentIndex(index);
+  };
+
+  // ---------------------------------------------------------------------------
   //  JSX
-  // ---------------------------------------------
+  // ---------------------------------------------------------------------------
 
   return (
     <Stack
@@ -71,7 +119,31 @@ export const ReviewCarousel = ({
       }}
     >
       {/* Review card */}
-      <ReviewCard review={review} />
+      <Box
+        sx={{
+          width: '100%',
+          maxWidth: 700,
+          height: {
+            xs: 400,
+            sm: 350,
+            md: 320,
+          },
+          overflow: 'hidden',
+        }}
+      >
+        <Slide
+          key={currentIndex}
+          direction={slideDirection}
+          in
+          mountOnEnter
+          unmountOnExit
+          timeout={450}
+        >
+          <Box>
+            <ReviewCard review={review} />
+          </Box>
+        </Slide>
+      </Box>
 
       {/* Navigation */}
       <Stack
@@ -100,7 +172,7 @@ export const ReviewCarousel = ({
             <Box
               key={review.id}
               component="button"
-              onClick={() => setCurrentIndex(index)}
+              onClick={() => selectReview(index)}
               aria-label={`Go to review ${index + 1}`}
               sx={{
                 width: index === currentIndex ? 24 : 8,
