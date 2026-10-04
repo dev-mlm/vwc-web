@@ -13,7 +13,6 @@ export const ReviewsSection = () => {
   const {
     data,
     isPending,
-    isError,
   } = useReviews();
 
   // ---------------------------------------------
