@@ -35,7 +35,7 @@ The website is built with React, TypeScript, Vite, and Material UI (MUI), with a
 ---
 
 ### Home Page
-> <img width="1872" height="2797" alt="Home Page" src="https://github.com/user-attachments/assets/ed105a22-36ff-4e9b-9b8f-56630f46936b" />
+> <img width="1869" height="3327" alt="Home" src="https://github.com/user-attachments/assets/58e565c1-d62a-4935-85b4-fa5e8424950e" />
 >
 > #### Home Page - New Patient Special Dialog
 > <img width="931" height="581" alt="New Patient Special Dialog" src="https://github.com/user-attachments/assets/d345743c-8138-4c55-8507-de4052258932" />
@@ -43,12 +43,12 @@ The website is built with React, TypeScript, Vite, and Material UI (MUI), with a
 ---
 
 > ### Staff Page
-> <img width="1870" height="2083" alt="Staff Page" src="https://github.com/user-attachments/assets/61ed4b8d-38db-49f8-b914-5042d06bdbf6" />
+> <img width="1870" height="2083" alt="Staff" src="https://github.com/user-attachments/assets/ddd52666-c3ef-4ca7-b59c-209b459aa398" />
 
 ---
 
 > ### Services Page
-> <img width="1871" height="1779" alt="Services Page" src="https://github.com/user-attachments/assets/ae53c67e-0994-4899-bd40-d16f5b0bc978" />
+> <img width="1872" height="1821" alt="Services" src="https://github.com/user-attachments/assets/1c303f94-a116-4096-955f-b7f204b87c6f" />
 >
 > #### Services Page - Service Info Dialog
-> <img width="930" height="673" alt="Service Info Dialog" src="https://github.com/user-attachments/assets/5ac37c9b-9c8b-4de4-84c6-74987bdfea43" />
+> <img width="932" height="955" alt="Service Dialog" src="https://github.com/user-attachments/assets/49e843c6-16fe-4f9e-9134-d01afdd49240" />
