@@ -37,9 +37,33 @@ const avatarColors = [
 const getAvatarColor = (name: string) => {
   const hash = name
     .split('')
-    .reduce((acc, character) => acc + character.charCodeAt(0), 0);
+    .reduce(
+      (acc, character) =>
+        acc + character.charCodeAt(0),
+      0
+    );
 
-  return avatarColors[hash % avatarColors.length];
+  return avatarColors[
+    hash % avatarColors.length
+  ];
+};
+
+const getDisplayName = (name: string) => {
+  const parts = name
+    .trim()
+    .split(/\s+/)
+    .map(
+      (part) =>
+        part.charAt(0).toUpperCase() +
+        part.slice(1).toLowerCase()
+    );
+
+  if (parts.length < 2) {
+    return parts[0];
+  }
+
+  const lastName = parts[parts.length - 1];
+  return `${parts.slice(0, -1).join(' ')} ${lastName.charAt(0)}.`;
 };
 
 const getTimeAgo = (dateString: string) => {
@@ -47,143 +71,172 @@ const getTimeAgo = (dateString: string) => {
   const now = new Date();
 
   const differenceInMilliseconds =
-    now.getTime() - publishedDate.getTime();
+    now.getTime() -
+    publishedDate.getTime();
 
   const days = Math.floor(
-    differenceInMilliseconds / (1000 * 60 * 60 * 24)
+    differenceInMilliseconds /
+    (1000 * 60 * 60 * 24)
   );
 
   if (days < 7) {
-    return `${days} ${days === 1 ? 'day' : 'days'} ago`;
+    return `${days} ${days === 1 ? 'day' : 'days'
+      } ago`;
   }
 
   const weeks = Math.floor(days / 7);
 
   if (days < 30) {
-    return `${weeks} ${weeks === 1 ? 'week' : 'weeks'} ago`;
+    return `${weeks} ${weeks === 1 ? 'week' : 'weeks'
+      } ago`;
   }
 
   const months = Math.floor(days / 30);
 
   if (days < 365) {
-    return `${months} ${months === 1 ? 'month' : 'months'} ago`;
+    return `${months} ${months === 1 ? 'month' : 'months'
+      } ago`;
   }
 
   const years = Math.floor(days / 365);
 
-  return `${years} ${years === 1 ? 'year' : 'years'} ago`;
-}
+  return `${years} ${years === 1 ? 'year' : 'years'
+    } ago`;
+};
 
 // -----------------------------------------------------------------------------
 //  ReviewCard
 // -----------------------------------------------------------------------------
 
-export const ReviewCard = ({ review }: ReviewCardProps) => {
-  const avatarColor = getAvatarColor(review.author.name);
-  const timeAgo = getTimeAgo(review.publishedAt);
+export const ReviewCard = ({
+  review,
+}: ReviewCardProps) => {
+  const avatarColor = getAvatarColor(
+    review.author.name
+  );
 
-  // ---------------------------------------------
+  const timeAgo = getTimeAgo(
+    review.publishedAt
+  );
+
+  // ---------------------------------------------------------------------------
   //  JSX
-  // ---------------------------------------------
+  // ---------------------------------------------------------------------------
 
   return (
     <Card
-      elevation={0}
+      elevation={1}
       sx={{
-        position: 'relative',
         width: '100%',
-        maxWidth: 700,
         height: '100%',
-        minHeight: 300,
+        minHeight: 0,
+        boxSizing: 'border-box',
+        display: 'flex',
+        flexDirection: 'column',
         p: {
-          xs: 3,
-          sm: 4,
-        },
-        pb: {
-          xs: 7,
-          sm: 8,
+          xs: 2,
+          sm: 2,
         },
         border: '1px solid',
         borderColor: 'divider',
         borderRadius: 3,
         backgroundColor: '#FFFFFF',
+        overflow: 'hidden',
       }}
     >
-      <Stack spacing={2.5}>
-        {/* Reviewer */}
-        <Stack
-          direction="row"
-          spacing={2}
+      {/* ------------------------------------------------------------------- */}
+      {/* Reviewer */}
+      {/* ------------------------------------------------------------------- */}
+
+      <Stack
+        direction="row"
+        spacing={2}
+        sx={{
+          alignItems: 'center',
+          flexShrink: 0,
+        }}
+      >
+        <Avatar
+          src={
+            review.author.avatarUrl ??
+            undefined
+          }
+          alt={review.author.name}
           sx={{
-            alignItems: 'center',
+            width: 52,
+            height: 52,
+            backgroundColor: avatarColor,
           }}
         >
-          <Avatar
-            src={review.author.avatarUrl ?? undefined}
-            alt={review.author.name}
+          {review.author.name
+            .charAt(0)
+            .toUpperCase()}
+        </Avatar>
+
+        <Box sx={{ minWidth: 0 }}>
+          <Typography
+            variant="h6"
             sx={{
-              width: 52,
-              height: 52,
-              backgroundColor: avatarColor,
+              fontWeight: 600,
             }}
           >
-            {review.author.name.charAt(0).toUpperCase()}
-          </Avatar>
+            {getDisplayName(review.author.name)}
+          </Typography>
 
-          <Box>
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 600,
-              }}
-            >
-              {review.author.name}
-            </Typography>
+          <Typography
+            variant="subtitle1"
+            color="text.secondary"
+          >
+            {timeAgo}
+          </Typography>
+        </Box>
+      </Stack>
 
-            <Typography
-              variant="subtitle1"
-              color="text.secondary"
-            >
-              {timeAgo}
-            </Typography>
-          </Box>
-        </Stack>
+      {/* ------------------------------------------------------------------- */}
+      {/* Review text */}
+      {/* ------------------------------------------------------------------- */}
 
-        {/* Review text */}
+      <Box
+        sx={{
+          flex: 1,
+          minHeight: 0,
+          mt: 2.5,
+          overflow: 'hidden',
+        }}
+      >
         <Typography
           variant="subtitle1"
           sx={{
-            lineHeight: 1.7,
-            overflow: 'hidden',
+            lineHeight: 1.5,
+
             display: '-webkit-box',
             WebkitBoxOrient: 'vertical',
+
+            /*
+             * Keep enough space for the footer.
+             */
             WebkitLineClamp: {
-              xs: 8,
-              sm: 7,
-            }
+              xs: 6,
+              sm: 6,
+            },
+
+            overflow: 'hidden',
           }}
         >
           {review.text}
         </Typography>
-      </Stack>
+      </Box>
 
+      {/* ------------------------------------------------------------------- */}
       {/* Bottom metadata */}
+      {/* ------------------------------------------------------------------- */}
+
       <Stack
         direction="row"
         sx={{
-          position: 'absolute',
-          left: {
-            xs: 24,
-            sm: 32,
-          },
-          right: {
-            xs: 24,
-            sm: 32,
-          },
-          bottom: {
-            xs: 20,
-            sm: 24,
-          },
+          flexShrink: 0,
+          mt: 2,
+
           alignItems: 'center',
           justifyContent: 'space-between',
         }}
